@@ -6,62 +6,47 @@
 //
 
 import UIKit
-import Alamofire
 
 class ViewController: UIViewController
-{
-    var allData = [ElectionResponse]()
-    
+{    
+    //MARK: LIFECYCLE FUNCTIONS
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        //WODClient.getElections(Endpoints.getGeneralElections.url, completion: handleGeneralElections(result:error:))
+        WODClient.getElections(electionType:"ALL", completion: handleGetElectionTypes(result:error:))
         
-        AF.request(WODClient.Endpoints.getGeneralElections.url).response
+    }
+    
+    //MARK: HELPER FUNCTIONS
+    func handleGetElectionTypes(result:[ElectionResponse],error:Error?)
+    {
+        if let error = error
         {
-            response in
-            if let data = response.data
+            print(error)
+        }
+        else
+        {
+            var types:[String] = []
+            var match:Bool
+            
+            for item in result
             {
-                let decoder = JSONDecoder()
-                do
+                match = false
+                for entry in types
                 {
-                    self.allData = try decoder.decode([ElectionResponse].self, from: data)
-                    DispatchQueue.main.async
+                    if item.type == entry
                     {
-                        //print(self.allData)
-                        var types:[String] = []
-                        var match:Bool
-                        
-                        for item in self.allData
-                        {
-                            match = false
-                            for entry in types
-                            {
-                                if item.type == entry
-                                {
-                                    match = true
-                                }
-                            }
-                            
-                            if !match
-                            {
-                                types.append(item.type)
-                            }
-                        }
-                        print(types)
+                        match = true
                     }
                 }
-                catch
+                
+                if !match
                 {
-                    DispatchQueue.main.async
-                    {
-                        print(error)
-                    }
+                    types.append(item.type)
                 }
             }
+            print(types)
         }
-        
-        
     }
 }
