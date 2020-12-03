@@ -27,7 +27,7 @@ class WODClient
             case.getElections(let electionType):
                 if(electionType == "ALL")
                 {
-                    return Endpoints.base + Endpoints.electionDataset
+                    return Endpoints.base + Endpoints.electionDataset + "?$limit=5000"
                 }
                 else
                 {

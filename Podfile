@@ -7,5 +7,6 @@ target 'WinnipegElectionResults' do
 
   # Pods for WinnipegElectionResults
   pod 'Alamofire'
+  pod 'Charts'
 
 end

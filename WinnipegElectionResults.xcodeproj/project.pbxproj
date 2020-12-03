@@ -8,11 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		69241B7F5F50A7A266E5CF2A /* Pods_WinnipegElectionResults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B52C2DF3572A551A7016680 /* Pods_WinnipegElectionResults.framework */; };
+		8200857A25781F7C005D9814 /* FilteredTableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200857925781F7C005D9814 /* FilteredTableExtension.swift */; };
+		8200857E257873BF005D9814 /* Layer2FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200857D257873BF005D9814 /* Layer2FilterVC.swift */; };
+		8200858325797CCA005D9814 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200858225797CCA005D9814 /* DetailVC.swift */; };
 		8215CCC62575A11000B76DFC /* WODClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215CCC52575A10F00B76DFC /* WODClient.swift */; };
 		8215CCCA2575A16A00B76DFC /* ElectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215CCC92575A16A00B76DFC /* ElectionResponse.swift */; };
+		824EF96C2576E55100F6D26D /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF96B2576E55000F6D26D /* TableViewExtension.swift */; };
+		824EF96F2576E90000F6D26D /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF96E2576E90000F6D26D /* CustomTableCell.swift */; };
+		824EF972257810A400F6D26D /* ResultFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF971257810A400F6D26D /* ResultFilterVC.swift */; };
+		8289280A2576D8640028F277 /* ElectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828928092576D8640028F277 /* ElectionData.swift */; };
 		82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */; };
 		82B6E31F25757ABE00A8C9BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */; };
-		82B6E32125757ABE00A8C9BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E32025757ABE00A8C9BF /* ViewController.swift */; };
+		82B6E32125757ABE00A8C9BF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E32025757ABE00A8C9BF /* HomeVC.swift */; };
 		82B6E32425757ABE00A8C9BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B6E32225757ABE00A8C9BF /* Main.storyboard */; };
 		82B6E32725757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E32525757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld */; };
 		82B6E32925757AC100A8C9BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B6E32825757AC100A8C9BF /* Assets.xcassets */; };
@@ -21,12 +28,19 @@
 
 /* Begin PBXFileReference section */
 		14C5DB6E2351965907AD0EB5 /* Pods-WinnipegElectionResults.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WinnipegElectionResults.debug.xcconfig"; path = "Target Support Files/Pods-WinnipegElectionResults/Pods-WinnipegElectionResults.debug.xcconfig"; sourceTree = "<group>"; };
+		8200857925781F7C005D9814 /* FilteredTableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredTableExtension.swift; sourceTree = "<group>"; };
+		8200857D257873BF005D9814 /* Layer2FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer2FilterVC.swift; sourceTree = "<group>"; };
+		8200858225797CCA005D9814 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		8215CCC52575A10F00B76DFC /* WODClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODClient.swift; sourceTree = "<group>"; };
 		8215CCC92575A16A00B76DFC /* ElectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionResponse.swift; sourceTree = "<group>"; };
+		824EF96B2576E55000F6D26D /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		824EF96E2576E90000F6D26D /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
+		824EF971257810A400F6D26D /* ResultFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFilterVC.swift; sourceTree = "<group>"; };
+		828928092576D8640028F277 /* ElectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionData.swift; sourceTree = "<group>"; };
 		82B6E31925757ABE00A8C9BF /* WinnipegElectionResults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WinnipegElectionResults.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		82B6E32025757ABE00A8C9BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		82B6E32025757ABE00A8C9BF /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		82B6E32325757ABE00A8C9BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82B6E32625757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WinnipegElectionResults.xcdatamodel; sourceTree = "<group>"; };
 		82B6E32825757AC100A8C9BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +71,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8200857C25787395005D9814 /* Layer2FilterVC */ = {
+			isa = PBXGroup;
+			children = (
+				8200857D257873BF005D9814 /* Layer2FilterVC.swift */,
+			);
+			path = Layer2FilterVC;
+			sourceTree = "<group>";
+		};
+		8200858125797CAF005D9814 /* DetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				8200858225797CCA005D9814 /* DetailVC.swift */,
+			);
+			path = DetailVC;
+			sourceTree = "<group>";
+		};
 		8215CCC82575A15500B76DFC /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +94,72 @@
 				8215CCC92575A16A00B76DFC /* ElectionResponse.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		824EF9742578176800F6D26D /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				82B6E32025757ABE00A8C9BF /* HomeVC.swift */,
+				824EF96B2576E55000F6D26D /* TableViewExtension.swift */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		824EF975257817E900F6D26D /* ResultFilterVC */ = {
+			isa = PBXGroup;
+			children = (
+				824EF971257810A400F6D26D /* ResultFilterVC.swift */,
+				8200857925781F7C005D9814 /* FilteredTableExtension.swift */,
+			);
+			path = ResultFilterVC;
+			sourceTree = "<group>";
+		};
+		828928042576D79B0028F277 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				82B6E32525757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld */,
+				828928092576D8640028F277 /* ElectionData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		828928052576D7A60028F277 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		828928062576D7AE0028F277 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8200858125797CAF005D9814 /* DetailVC */,
+				8200857C25787395005D9814 /* Layer2FilterVC */,
+				824EF975257817E900F6D26D /* ResultFilterVC */,
+				824EF9742578176800F6D26D /* HomeVC */,
+				824EF96E2576E90000F6D26D /* CustomTableCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		828928072576D7D20028F277 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				828928082576D7F10028F277 /* Storyboards */,
+				82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */,
+				82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */,
+				82B6E32825757AC100A8C9BF /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		828928082576D7F10028F277 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				82B6E32225757ABE00A8C9BF /* Main.storyboard */,
+				82B6E32A25757AC100A8C9BF /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		82B6E31025757ABE00A8C9BF = {
@@ -87,15 +183,12 @@
 		82B6E31B25757ABE00A8C9BF /* WinnipegElectionResults */ = {
 			isa = PBXGroup;
 			children = (
-				8215CCC82575A15500B76DFC /* Network */,
-				82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */,
-				82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */,
-				82B6E32025757ABE00A8C9BF /* ViewController.swift */,
-				82B6E32225757ABE00A8C9BF /* Main.storyboard */,
-				82B6E32825757AC100A8C9BF /* Assets.xcassets */,
-				82B6E32A25757AC100A8C9BF /* LaunchScreen.storyboard */,
 				82B6E32D25757AC100A8C9BF /* Info.plist */,
-				82B6E32525757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld */,
+				828928072576D7D20028F277 /* Supporting Files */,
+				828928062576D7AE0028F277 /* Controller */,
+				828928052576D7A60028F277 /* View */,
+				828928042576D79B0028F277 /* Model */,
+				8215CCC82575A15500B76DFC /* Network */,
 			);
 			path = WinnipegElectionResults;
 			sourceTree = "<group>";
@@ -222,9 +315,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82B6E32125757ABE00A8C9BF /* ViewController.swift in Sources */,
+				82B6E32125757ABE00A8C9BF /* HomeVC.swift in Sources */,
+				8200857E257873BF005D9814 /* Layer2FilterVC.swift in Sources */,
+				8200858325797CCA005D9814 /* DetailVC.swift in Sources */,
 				82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */,
+				824EF96F2576E90000F6D26D /* CustomTableCell.swift in Sources */,
 				82B6E32725757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld in Sources */,
+				824EF96C2576E55100F6D26D /* TableViewExtension.swift in Sources */,
+				8200857A25781F7C005D9814 /* FilteredTableExtension.swift in Sources */,
+				824EF972257810A400F6D26D /* ResultFilterVC.swift in Sources */,
+				8289280A2576D8640028F277 /* ElectionData.swift in Sources */,
 				8215CCC62575A11000B76DFC /* WODClient.swift in Sources */,
 				82B6E31F25757ABE00A8C9BF /* SceneDelegate.swift in Sources */,
 				8215CCCA2575A16A00B76DFC /* ElectionResponse.swift in Sources */,
