@@ -19,7 +19,7 @@ class HomeVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        tableView.backgroundColor = .black
+        tableView.backgroundColor = UIColor.AppTheme.paleYellow
         
         WODClient.getElections(electionType:"ALL", completion: handleGetElectionTypes(result:error:))
         

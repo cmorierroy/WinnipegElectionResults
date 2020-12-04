@@ -14,7 +14,9 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource
     {
         return ElectionData.types.count
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomTableCell
@@ -24,7 +26,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource
         cell.contentView.layer.cornerRadius = 10
         cell.contentView.layer.borderWidth = 3
         cell.contentView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1.0)
-        cell.backgroundColor = .black
+        cell.backgroundColor = UIColor.AppTheme.paleYellow
         
         return cell
     }
