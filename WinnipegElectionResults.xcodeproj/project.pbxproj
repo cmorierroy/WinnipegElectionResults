@@ -11,6 +11,7 @@
 		8200857A25781F7C005D9814 /* FilteredTableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200857925781F7C005D9814 /* FilteredTableExtension.swift */; };
 		8200857E257873BF005D9814 /* Layer2FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200857D257873BF005D9814 /* Layer2FilterVC.swift */; };
 		8200858325797CCA005D9814 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200858225797CCA005D9814 /* DetailVC.swift */; };
+		8200858A25798AD8005D9814 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200858925798AD8005D9814 /* Colors.swift */; };
 		8215CCC62575A11000B76DFC /* WODClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215CCC52575A10F00B76DFC /* WODClient.swift */; };
 		8215CCCA2575A16A00B76DFC /* ElectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215CCC92575A16A00B76DFC /* ElectionResponse.swift */; };
 		824EF96C2576E55100F6D26D /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF96B2576E55000F6D26D /* TableViewExtension.swift */; };
@@ -31,6 +32,7 @@
 		8200857925781F7C005D9814 /* FilteredTableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredTableExtension.swift; sourceTree = "<group>"; };
 		8200857D257873BF005D9814 /* Layer2FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer2FilterVC.swift; sourceTree = "<group>"; };
 		8200858225797CCA005D9814 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		8200858925798AD8005D9814 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8215CCC52575A10F00B76DFC /* WODClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODClient.swift; sourceTree = "<group>"; };
 		8215CCC92575A16A00B76DFC /* ElectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionResponse.swift; sourceTree = "<group>"; };
 		824EF96B2576E55000F6D26D /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				82B6E32525757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld */,
 				828928092576D8640028F277 /* ElectionData.swift */,
+				8200858925798AD8005D9814 /* Colors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				82B6E32125757ABE00A8C9BF /* HomeVC.swift in Sources */,
 				8200857E257873BF005D9814 /* Layer2FilterVC.swift in Sources */,
 				8200858325797CCA005D9814 /* DetailVC.swift in Sources */,
+				8200858A25798AD8005D9814 /* Colors.swift in Sources */,
 				82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */,
 				824EF96F2576E90000F6D26D /* CustomTableCell.swift in Sources */,
 				82B6E32725757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld in Sources */,

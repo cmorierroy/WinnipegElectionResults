@@ -223,10 +223,10 @@
                         <viewLayoutGuide key="safeArea" id="7Zx-D7-eep"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="NJK-Br-7cj" firstAttribute="top" secondItem="7Zx-D7-eep" secondAttribute="top" id="7QT-11-pHZ"/>
                             <constraint firstItem="7Zx-D7-eep" firstAttribute="trailing" secondItem="NJK-Br-7cj" secondAttribute="trailing" id="Cw3-cp-OJv"/>
                             <constraint firstItem="7Zx-D7-eep" firstAttribute="bottom" secondItem="NJK-Br-7cj" secondAttribute="bottom" id="bSq-8y-gcG"/>
                             <constraint firstItem="NJK-Br-7cj" firstAttribute="leading" secondItem="7Zx-D7-eep" secondAttribute="leading" id="kFE-rl-xwh"/>
-                            <constraint firstItem="NJK-Br-7cj" firstAttribute="top" secondItem="7Zx-D7-eep" secondAttribute="top" id="tmi-dV-sOy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rpl-cL-byh"/>
