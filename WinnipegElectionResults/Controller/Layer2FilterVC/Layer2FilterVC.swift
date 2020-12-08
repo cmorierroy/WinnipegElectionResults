@@ -39,7 +39,7 @@ extension Layer2FilterVC : UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        return "Results: \(ElectionData.wards.count)"
+        return "Areas: \(ElectionData.wards.count)"
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
@@ -62,12 +62,14 @@ extension Layer2FilterVC : UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "filter2Cell") //as! CustomTableCell
         
         cell!.textLabel?.text = ElectionData.wards[indexPath.row]
-        cell!.textLabel?.textColor = .white
-        
+        cell!.textLabel?.textColor = UIColor.AppTheme.paleYellow
+
+        cell!.contentView.backgroundColor = .black
         cell!.contentView.layer.cornerRadius = 10
         cell!.contentView.layer.borderWidth = 3
         cell!.contentView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1.0)
-        cell!.backgroundColor = .black
+        cell!.backgroundColor = UIColor.AppTheme.paleYellow
+
         
         return cell!
     }

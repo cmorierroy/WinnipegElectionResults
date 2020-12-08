@@ -13,12 +13,18 @@ class HomeVC: UIViewController
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableLabel: UILabel!
+    @IBOutlet weak var navItem: UINavigationItem!
+    
     var electionTypes:[ElectionResponse] = []
     
     //MARK: LIFECYCLE FUNCTIONS
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        navItem.standardAppearance?.backgroundColor = .black
+        navItem.standardAppearance?.shadowColor = .blue
+        
         tableView.backgroundColor = UIColor.AppTheme.paleYellow
         
         WODClient.getElections(electionType:"ALL", completion: handleGetElectionTypes(result:error:))
