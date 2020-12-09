@@ -11,6 +11,7 @@ import Charts
 class DetailVC: UIViewController {
 
     @IBOutlet weak var pieChart: PieChartView!
+    @IBOutlet weak var barChart: BarChartView!
     
     var chartTitle:String = ""
     var results:[ElectionResponse] = []
@@ -20,29 +21,33 @@ class DetailVC: UIViewController {
     {
         super.viewDidLoad()
         
-        loadPieChart()
-        
         //set up title label
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = chartTitle
         
-        var constraints = [NSLayoutConstraint]()
+        view.addSubview(title)
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
         
-        //Add
-        //constraints.append(title.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor))
-        //constraints.append(title.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor))
-        //constraints.append(title.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor))
-        //constraints.append(title.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor))
-
-        //Activate
-        //NSLayoutConstraint.activate(constraints)
+        if(UserDefaults.standard.string(forKey: "ChartType") == "pie")
+        {
+            barChart.isHidden = true
+            pieChart.isHidden = false
+            loadPieChart()
+            pieChart.animate(xAxisDuration: 1, yAxisDuration: 1)
+        }
+        else
+        {
+            barChart.isHidden = false
+            pieChart.isHidden = true
+            loadBarChart()
+            barChart.animate(xAxisDuration: 1, yAxisDuration: 1)
+        }
         
-        //title.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        //title.topAnchor.constraint(equalTo: view.topAnchor, constant: 20)
-        
-        pieChart.addSubview(title)
-        pieChart.animate(xAxisDuration: 1, yAxisDuration: 1)
     }
     
     //MARK: PIE CHART f(x)s
@@ -89,7 +94,65 @@ class DetailVC: UIViewController {
         
         //customize legend
         pieChart.legend.textColor = .black
+    }
+    
+    //MARK: BAR CHART f(x)s
+    func loadBarChart()
+    {
+        var dataPoints:[String] = []
+        var values:[Double] = []
         
+        //get names of people running and amount of votes obtained
+        for item in results
+        {
+            dataPoints.append(item.candidate)
+            values.append(Double(item.votes)!)
+        }
+        
+        //Set ChartDataEntry
+        var dataEntries: [ChartDataEntry] = []
+        for i in 0..<dataPoints.count
+        {
+            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i], data: dataPoints[i] as AnyObject)
+            dataEntries.append(dataEntry)
+        }
+        
+        //Generate random colors for chart
+        let chartColors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        
+        //Create legend entries
+        var legendEntries:[LegendEntry] = []
+        for i in 0 ..< dataPoints.count
+        {
+            let entry = LegendEntry(label: dataPoints[i], form: Legend.Form.circle, formSize: 10, formLineWidth: 1, formLineDashPhase: 1, formLineDashLengths: nil, formColor: chartColors[i])
+            legendEntries.append(entry)
+        }
+
+        barChart.legend.setCustom(entries: legendEntries)
+        
+        //Set ChartDataSet
+        let barChartDataSet = BarChartDataSet(entries: dataEntries, label: nil)
+        barChartDataSet.colors = chartColors
+        
+        //Set ChartData
+        let barChartData = BarChartData(dataSet: barChartDataSet)
+        let format = NumberFormatter()
+        format.numberStyle = .decimal
+        let formatter = DefaultValueFormatter(formatter: format)
+        barChartData.setValueFormatter(formatter)
+        barChartData.setValueTextColor(.black)
+        
+        //Assign it to the chart’s data
+        
+        //CUSTOMIZATION OF PIE CHART
+        //barChart.entryLabelColor = .black
+        //pieChart.centerText = "Democratic score:..."
+        //pieChart.holeColor = UIColor.AppTheme.paleYellow
+        barChart.data = barChartData
+        barChart.backgroundColor = UIColor.AppTheme.paleYellow
+        
+        //customize legend
+        barChart.legend.textColor = .black
     }
     
     //randomizes colors for pie chart

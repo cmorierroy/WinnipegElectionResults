@@ -51,7 +51,7 @@
         <!--Preferences-->
         <scene sceneID="Qdk-bP-0hq">
             <objects>
-                <viewController id="cKx-HC-K1c" sceneMemberID="viewController">
+                <viewController id="cKx-HC-K1c" customClass="PreferencesVC" customModule="WinnipegElectionResults" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QPE-r0-0Fg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,6 +100,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Preferences" image="gearshape.fill" catalog="system" id="FUh-fu-lnf"/>
+                    <connections>
+                        <outlet property="chartTypeControl" destination="Tsh-ZI-i1a" id="Kff-Kt-vlm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38I-6K-xgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -126,6 +129,7 @@
         <!--HomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="WinnipegElectionResults" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -208,7 +212,6 @@
                         <segue destination="UeE-me-4pq" kind="push" identifier="cellTapped" id="u6W-jU-B6G"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-175" y="-680"/>
         </scene>
@@ -328,27 +331,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJK-Br-7cj" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="273" width="414" height="350"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="0Xx-Ki-uUb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5a-YH-pP8" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="273" width="414" height="350"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="QB4-aH-26K"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Zx-D7-eep"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.99671262500000002" green="0.95924669500000004" blue="0.60387462380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NJK-Br-7cj" firstAttribute="top" secondItem="7Zx-D7-eep" secondAttribute="top" id="7QT-11-pHZ"/>
-                            <constraint firstItem="7Zx-D7-eep" firstAttribute="trailing" secondItem="NJK-Br-7cj" secondAttribute="trailing" id="Cw3-cp-OJv"/>
-                            <constraint firstItem="7Zx-D7-eep" firstAttribute="bottom" secondItem="NJK-Br-7cj" secondAttribute="bottom" id="bSq-8y-gcG"/>
-                            <constraint firstItem="NJK-Br-7cj" firstAttribute="leading" secondItem="7Zx-D7-eep" secondAttribute="leading" id="kFE-rl-xwh"/>
+                            <constraint firstItem="W5a-YH-pP8" firstAttribute="centerX" secondItem="Tvb-Ye-F1l" secondAttribute="centerX" id="2Wm-B3-zU0"/>
+                            <constraint firstItem="NJK-Br-7cj" firstAttribute="trailing" secondItem="7Zx-D7-eep" secondAttribute="trailing" id="Coe-U3-X4F"/>
+                            <constraint firstItem="NJK-Br-7cj" firstAttribute="centerY" secondItem="Tvb-Ye-F1l" secondAttribute="centerY" id="ND0-Uy-bGf"/>
+                            <constraint firstItem="W5a-YH-pP8" firstAttribute="leading" secondItem="7Zx-D7-eep" secondAttribute="leading" id="bur-Md-yJS"/>
+                            <constraint firstItem="NJK-Br-7cj" firstAttribute="leading" secondItem="7Zx-D7-eep" secondAttribute="leading" id="iE0-Au-0t3"/>
+                            <constraint firstItem="W5a-YH-pP8" firstAttribute="centerY" secondItem="Tvb-Ye-F1l" secondAttribute="centerY" id="tws-Ci-lv8"/>
+                            <constraint firstItem="NJK-Br-7cj" firstAttribute="centerX" secondItem="Tvb-Ye-F1l" secondAttribute="centerX" id="w7q-r2-6w8"/>
+                            <constraint firstItem="7Zx-D7-eep" firstAttribute="trailing" secondItem="W5a-YH-pP8" secondAttribute="trailing" id="xaJ-Eg-LcW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rpl-cL-byh"/>
                     <connections>
+                        <outlet property="barChart" destination="W5a-YH-pP8" id="qw3-xm-ib4"/>
                         <outlet property="pieChart" destination="NJK-Br-7cj" id="LDS-wU-gue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkO-HJ-z9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2449" y="64"/>
+            <point key="canvasLocation" x="2447.826086956522" y="63.616071428571423"/>
         </scene>
     </scenes>
     <resources>
