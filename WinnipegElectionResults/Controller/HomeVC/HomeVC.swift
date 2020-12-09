@@ -25,8 +25,6 @@ class HomeVC: UIViewController
         navItem.standardAppearance?.backgroundColor = .black
         navItem.standardAppearance?.shadowColor = .blue
         
-        tableView.backgroundColor = UIColor.AppTheme.paleYellow
-        
         WODClient.getElections(electionType:"ALL", completion: handleGetElectionTypes(result:error:))
         
     }
@@ -65,7 +63,6 @@ class HomeVC: UIViewController
             {
                 let type = sender as! String
                 vc.electionResults = ElectionData.resultsMatching(type:type)
-                ElectionData.uniqueDates(data: vc.electionResults)
             }
         }
     }

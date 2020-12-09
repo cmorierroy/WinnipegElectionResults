@@ -12,13 +12,25 @@ class Layer2FilterVC: UIViewController
     
     @IBOutlet weak var tableView: UITableView!
     
-    var resultsForYear:[ElectionResponse] = []
+    var filter:ElectionData.Filters
+    {
+        switch(ElectionData.currentFilter)
+        {
+        case .date: return .area
+        case .area: return .date
+        }
+    }
+    
+    var uniqueAttributes:[String] = []
+    var resultsForKey:[ElectionResponse] = []
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        uniqueAttributes = ElectionData.filterUniqueAttributes(attribute: filter, data: resultsForKey)
+        tableView.reloadData()
 
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -27,9 +39,10 @@ class Layer2FilterVC: UIViewController
         {
             if let vc = segue.destination as? DetailVC
             {
-                let ward = sender as! String
-                vc.chartTitle = ward
-                vc.results = ElectionData.resultsMatching(ward: ward, from: resultsForYear)
+                let key = sender as! String
+                vc.chartTitle = key
+
+                vc.results = ElectionData.resultsMatching(key: key, filter: filter, from: resultsForKey)
             }
         }
     }
@@ -39,7 +52,11 @@ extension Layer2FilterVC : UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        return "Areas: \(ElectionData.wards.count)"
+        switch(filter)
+        {
+        case .area: return "Areas: \(uniqueAttributes.count)"
+        case .date: return "Years: \(uniqueAttributes.count)"
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
@@ -54,14 +71,20 @@ extension Layer2FilterVC : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return ElectionData.wards.count
+        return uniqueAttributes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filter2Cell") //as! CustomTableCell
         
-        cell!.textLabel?.text = ElectionData.wards[indexPath.row]
+        cell!.textLabel?.text = uniqueAttributes[indexPath.row]
+//        switch(ElectionData.currentFilter)
+//        {
+//        case .date: cell!.textLabel?.text = resultsForKey[indexPath.row].area
+//        case .area: cell!.textLabel?.text = resultsForKey[indexPath.row].date
+//        }
+        
         cell!.textLabel?.textColor = UIColor.AppTheme.paleYellow
 
         cell!.contentView.backgroundColor = .black
@@ -76,7 +99,16 @@ extension Layer2FilterVC : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let ward = ElectionData.wards[indexPath.row]
-        performSegue(withIdentifier: "toDetailVC", sender: ward)
+        //MARK: needs adjustment
+        var key:String
+        
+        key = uniqueAttributes[indexPath.row]
+//        switch(ElectionData.currentFilter)
+//        {
+//        case .date: key = resultsForKey[indexPath.row].area
+//        case .area: key = resultsForKey[indexPath.row].date
+//        }
+        
+        performSegue(withIdentifier: "toDetailVC", sender: key)
     }
 }

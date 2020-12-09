@@ -12,7 +12,11 @@ extension ResultFilterVC : UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        return "Elections: \(ElectionData.dates.count)"
+        switch(ElectionData.currentFilter)
+        {
+        case .date: return "Elections years: \(uniqueAttributes.count)"
+        case .area: return "Election areas: \(uniqueAttributes.count)"
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
@@ -27,7 +31,7 @@ extension ResultFilterVC : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return ElectionData.dates.count
+        return uniqueAttributes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -36,7 +40,11 @@ extension ResultFilterVC : UITableViewDelegate, UITableViewDataSource
         
         //cell.titleLabel.text = ElectionData.dates[indexPath.row]
         //cell.titleLabel.textColor = UIColor.AppTheme.paleYellow
-        cell!.textLabel?.text = ElectionData.dates[indexPath.row]
+        
+        //set cell text
+        cell!.textLabel?.text = uniqueAttributes[indexPath.row]
+        
+        //CELL APPEARANCE
         cell!.textLabel?.textColor = UIColor.AppTheme.paleYellow
         
         cell!.contentView.backgroundColor = .black
@@ -45,13 +53,12 @@ extension ResultFilterVC : UITableViewDelegate, UITableViewDataSource
         cell!.contentView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         cell!.backgroundColor = UIColor.AppTheme.paleYellow
 
-        
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let date = ElectionData.dates[indexPath.row]
-        performSegue(withIdentifier: "toLayer2", sender: date)
+        let key = uniqueAttributes[indexPath.row]
+        performSegue(withIdentifier: "toLayer2", sender: key)
     }
 }

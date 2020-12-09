@@ -11,8 +11,14 @@ class ElectionData
 {
     static var all:[ElectionResponse] = []
     static var types:[String] = []
-    static var dates:[String] = []
-    static var wards:[String] = []
+    
+    enum Filters:String
+    {
+        case date = "date"
+        case area = "area"
+    }
+    
+    static var currentFilter:Filters = Filters.date
     
     //MARK: FILTERING f(x)s
     //return all results with given type (General Election or By-Election, so far.)
@@ -32,31 +38,27 @@ class ElectionData
     }
     
     //return all results from passed data whose date attribute matches the date parameter
-    class func resultsMatching(date: String, from data: [ElectionResponse]) -> [ElectionResponse]
+    class func resultsMatching(key: String, filter:Filters, from data: [ElectionResponse]) -> [ElectionResponse]
     {
         var results:[ElectionResponse] = []
         
-        for item in data
+        switch(filter)
         {
-            if(item.date == date)
+        case .date:
+            for item in data
             {
-                results.append(item)
+                if(item.date == key)
+                {
+                    results.append(item)
+                }
             }
-        }
-        
-        return results
-    }
-    
-    //return all results from passed data whose area attribute matches the ward parameter
-    class func resultsMatching(ward: String, from data: [ElectionResponse]) -> [ElectionResponse]
-    {
-        var results:[ElectionResponse] = []
-        
-        for item in data
-        {
-            if(item.area == ward)
+        case .area:
+            for item in data
             {
-                results.append(item)
+                if(item.area == key)
+                {
+                    results.append(item)
+                }
             }
         }
         
@@ -64,32 +66,31 @@ class ElectionData
     }
     
     //MARK: SET MAKING f(x)s
-    //extract all unique dates from given data
-    class func uniqueDates(data:[ElectionResponse])
+    //extract all unique attributes from given data
+    class func filterUniqueAttributes(attribute:Filters, data: [ElectionResponse]) -> [String]
     {
-        ElectionData.dates = []
+        var results:[String] = []
         
-        for item in data
+        switch(attribute)
         {
-            if(ElectionData.dates.firstIndex(of: item.date) == nil)
+        case .date:
+            for item in data
             {
-                ElectionData.dates.append(item.date)
+                if results.firstIndex(of: item.date) == nil
+                {
+                    results.append(item.date)
+                }
+            }
+        case .area:
+            for item in data
+            {
+                if(results.firstIndex(of: item.area) == nil)
+                {
+                    results.append(item.area)
+                }
             }
         }
-    }
-    
-    //extract all unique wards/areas from given data
-    class func uniqueWards(data: [ElectionResponse])
-    {
-        ElectionData.wards = []
         
-        for item in data
-        {
-            if(ElectionData.wards.firstIndex(of: item.area) == nil)
-            {
-                ElectionData.wards.append(item.area)
-            }
-        }
-        
+        return results
     }
 }
