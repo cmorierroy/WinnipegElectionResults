@@ -13,6 +13,8 @@
 		8200858A25798AD8005D9814 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200858925798AD8005D9814 /* Colors.swift */; };
 		8215CCC62575A11000B76DFC /* WODClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215CCC52575A10F00B76DFC /* WODClient.swift */; };
 		8215CCCA2575A16A00B76DFC /* ElectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215CCC92575A16A00B76DFC /* ElectionResponse.swift */; };
+		823FAD202586EE5500127333 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823FAD1F2586EE5500127333 /* DataController.swift */; };
+		823FAD2425871EE800127333 /* SavedResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823FAD2325871EE700127333 /* SavedResultsVC.swift */; };
 		824EF96C2576E55100F6D26D /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF96B2576E55000F6D26D /* TableViewExtension.swift */; };
 		824EF96F2576E90000F6D26D /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF96E2576E90000F6D26D /* CustomTableCell.swift */; };
 		824EF972257810A400F6D26D /* ResultFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF971257810A400F6D26D /* ResultFilterVC.swift */; };
@@ -36,6 +38,8 @@
 		8200858925798AD8005D9814 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8215CCC52575A10F00B76DFC /* WODClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODClient.swift; sourceTree = "<group>"; };
 		8215CCC92575A16A00B76DFC /* ElectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionResponse.swift; sourceTree = "<group>"; };
+		823FAD1F2586EE5500127333 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		823FAD2325871EE700127333 /* SavedResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedResultsVC.swift; sourceTree = "<group>"; };
 		824EF96B2576E55000F6D26D /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		824EF96E2576E90000F6D26D /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
 		824EF971257810A400F6D26D /* ResultFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFilterVC.swift; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		823FAD1E2586EE3800127333 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				82B6E32525757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld */,
+				823FAD1F2586EE5500127333 /* DataController.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		824EF9742578176800F6D26D /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +129,7 @@
 		828928042576D79B0028F277 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				82B6E32525757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld */,
+				823FAD1E2586EE3800127333 /* CoreData */,
 				828928092576D8640028F277 /* ElectionData.swift */,
 				8200858925798AD8005D9814 /* Colors.swift */,
 			);
@@ -133,12 +146,13 @@
 		828928062576D7AE0028F277 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				824EF9742578176800F6D26D /* HomeVC */,
+				824EF975257817E900F6D26D /* ResultFilterVC */,
 				8291C495258264C90036AD1E /* CollectionVC */,
 				8200858125797CAF005D9814 /* DetailVC */,
-				824EF975257817E900F6D26D /* ResultFilterVC */,
-				824EF9742578176800F6D26D /* HomeVC */,
 				8291C491258154060036AD1E /* PreferencesVC.swift */,
 				8291C49B2586C70F0036AD1E /* TableExtension.swift */,
+				823FAD2325871EE700127333 /* SavedResultsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -331,7 +345,9 @@
 				8291C49C2586C7100036AD1E /* TableExtension.swift in Sources */,
 				8200858A25798AD8005D9814 /* Colors.swift in Sources */,
 				82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */,
+				823FAD202586EE5500127333 /* DataController.swift in Sources */,
 				824EF96F2576E90000F6D26D /* CustomTableCell.swift in Sources */,
+				823FAD2425871EE800127333 /* SavedResultsVC.swift in Sources */,
 				82B6E32725757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld in Sources */,
 				824EF96C2576E55100F6D26D /* TableViewExtension.swift in Sources */,
 				8200857A25781F7C005D9814 /* FilteredTableExtension.swift in Sources */,

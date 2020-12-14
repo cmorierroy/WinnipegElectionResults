@@ -14,6 +14,7 @@ class HomeVC: UIViewController
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableLabel: UILabel!
     @IBOutlet weak var navItem: UINavigationItem!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var tableEntries:[String] = []
     
@@ -24,6 +25,9 @@ class HomeVC: UIViewController
         
         navItem.standardAppearance?.backgroundColor = .black
         navItem.standardAppearance?.shadowColor = .blue
+        
+        tableView.isHidden = true
+        activityIndicator.startAnimating()
         
         WODClient.getElections(electionType:"ALL", completion: handleGetElectionTypes(result:error:))
     }
@@ -36,9 +40,10 @@ class HomeVC: UIViewController
     //MARK: HELPER FUNCTIONS
     func handleGetElectionTypes(result:[ElectionResponse],error:Error?)
     {
+        
         if let error = error
         {
-            print(error)
+            displayAlert(title: "Error", message: error.localizedDescription)
         }
         else
         {
@@ -50,6 +55,9 @@ class HomeVC: UIViewController
             tableEntries = ElectionData.filterUniqueAttributes(attribute: .type, data: ElectionData.all)
             tableView.reloadData()
         }
+        
+        activityIndicator.stopAnimating()
+        tableView.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -62,6 +70,16 @@ class HomeVC: UIViewController
                 vc.navBar.title = type + "s"
                 vc.electionResults = ElectionData.resultsMatching(key: type, filter: .type, from: ElectionData.all)
             }
+        }
+    }
+    
+    func displayAlert(title: String, message: String)
+    {
+        DispatchQueue.main.async
+        {
+            let alertVC = UIAlertController(title:title,message: message,preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.showDetailViewController(alertVC, sender: nil)
         }
     }
 }

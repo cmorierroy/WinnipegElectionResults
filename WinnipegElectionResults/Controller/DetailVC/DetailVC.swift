@@ -8,8 +8,8 @@
 import UIKit
 import Charts
 
-class DetailVC: UIViewController {
-
+class DetailVC: UIViewController
+{
     @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var barChart: BarChartView!
     @IBOutlet weak var navBar: UINavigationItem!
@@ -18,6 +18,12 @@ class DetailVC: UIViewController {
     
     var chartTitle:String = ""
     var results:[ElectionResponse] = []
+    var favorited:Bool = false
+    
+    @IBAction func favButtonPressed(_ sender: Any)
+    {
+        favouriteButton.isSelected = !favouriteButton.isSelected
+    }
     
     //MARK: LIFECYCLE f(x)s
     override func viewDidLoad()
@@ -25,7 +31,9 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         
         //set up title label
-        subTitle.text = chartTitle        
+        subTitle.text = chartTitle
+        
+        setupFavoriteButton()
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -46,9 +54,24 @@ class DetailVC: UIViewController {
             loadBarChart()
             barChart.animate(xAxisDuration: 1, yAxisDuration: 1)
         }
+    }
+    
+    func setupFavoriteButton()
+    {
+        //set image for states
+        favouriteButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
+        favouriteButton.setImage(UIImage(systemName:"star"), for: .normal)
         
-        
-        
+        //Favourite button customization
+        favouriteButton.layer.borderWidth = 1
+        favouriteButton.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        favouriteButton.backgroundColor = UIColor(cgColor: CGColor(gray: 0, alpha: 0.2))
+        //favouriteButton.layer.cornerRadius = favouriteButton.frame.height/3
+        favouriteButton.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+        favouriteButton.layer.masksToBounds = false
+        favouriteButton.layer.shadowRadius = 5
+        favouriteButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        favouriteButton.layer.shadowOpacity = 1
     }
     
     //MARK: PIE CHART f(x)s
