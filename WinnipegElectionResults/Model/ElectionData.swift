@@ -16,6 +16,7 @@ class ElectionData
     {
         case date = "date"
         case area = "area"
+        case type = "type"
     }
     
     static var currentFilter:Filters = Filters.date
@@ -37,6 +38,11 @@ class ElectionData
         return results
     }
     
+    class func filterBallotQuestions()
+    {
+            print("Gotta implement filterBallotQuestions")
+    }
+    
     //return all results from passed data whose date attribute matches the date parameter
     class func resultsMatching(key: String, filter:Filters, from data: [ElectionResponse]) -> [ElectionResponse]
     {
@@ -56,6 +62,14 @@ class ElectionData
             for item in data
             {
                 if(item.area == key)
+                {
+                    results.append(item)
+                }
+            }
+        case .type:
+            for item in data
+            {
+                if(item.type == key)
                 {
                     results.append(item)
                 }
@@ -87,6 +101,14 @@ class ElectionData
                 if(results.firstIndex(of: item.area) == nil)
                 {
                     results.append(item.area)
+                }
+            }
+        case .type:
+            for item in data
+            {
+                if(results.firstIndex(of: item.type) == nil)
+                {
+                    results.append(item.type)
                 }
             }
         }

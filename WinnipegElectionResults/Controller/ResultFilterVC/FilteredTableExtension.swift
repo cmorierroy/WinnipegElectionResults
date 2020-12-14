@@ -10,55 +10,57 @@ import UIKit
 
 extension ResultFilterVC : UITableViewDelegate, UITableViewDataSource
 {
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+//    {
+//        switch(ElectionData.currentFilter)
+//        {
+//        case .date: return "Elections years: \(tableEntries.count)"
+//        case .area: return "Election areas: \(tableEntries.count)"
+//        default: return "ERROR"
+//        }
+//    }
+
+    
+    func numberOfSections(in tableView: UITableView) -> Int
     {
-        switch(ElectionData.currentFilter)
-        {
-        case .date: return "Elections years: \(uniqueAttributes.count)"
-        case .area: return "Election areas: \(uniqueAttributes.count)"
-        }
+        return tableEntries.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return 15
+        return UITableView.TableDimensions.heightForHeaderInSection
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-        return 1
+        let view = UIView()
+        view.backgroundColor = UIColor.AppTheme.paleYellow
+        return view
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return uniqueAttributes.count
+        return UITableView.TableDimensions.numberOfRowsInSection
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableView.TableDimensions.heightForRowAt
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell") ////as! CustomTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomTableCell
         
-        //cell.titleLabel.text = ElectionData.dates[indexPath.row]
-        //cell.titleLabel.textColor = UIColor.AppTheme.paleYellow
-        
-        //set cell text
-        cell!.textLabel?.text = uniqueAttributes[indexPath.row]
-        
-        //CELL APPEARANCE
-        cell!.textLabel?.textColor = UIColor.AppTheme.paleYellow
-        
-        cell!.contentView.backgroundColor = .black
-        cell!.contentView.layer.cornerRadius = 10
-        cell!.contentView.layer.borderWidth = 3
-        cell!.contentView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1.0)
-        cell!.backgroundColor = UIColor.AppTheme.paleYellow
+        cell.setupAppearance()
+        cell.titleLabel.text = tableEntries[indexPath.section]
 
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let key = uniqueAttributes[indexPath.row]
-        performSegue(withIdentifier: "toLayer2", sender: key)
+        let key = tableEntries[indexPath.section]
+        performSegue(withIdentifier: "toCollection", sender: key)
     }
 }

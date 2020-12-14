@@ -15,7 +15,7 @@ class HomeVC: UIViewController
     @IBOutlet weak var tableLabel: UILabel!
     @IBOutlet weak var navItem: UINavigationItem!
     
-    var electionTypes:[ElectionResponse] = []
+    var tableEntries:[String] = []
     
     //MARK: LIFECYCLE FUNCTIONS
     override func viewDidLoad()
@@ -26,7 +26,11 @@ class HomeVC: UIViewController
         navItem.standardAppearance?.shadowColor = .blue
         
         WODClient.getElections(electionType:"ALL", completion: handleGetElectionTypes(result:error:))
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     //MARK: HELPER FUNCTIONS
@@ -40,17 +44,10 @@ class HomeVC: UIViewController
         {
             //save all the results
             ElectionData.all = result
+            ElectionData.filterBallotQuestions() //create a separate JSON objects for any ballot questions
+            //TODO: probably best to divide wards from school divisions from ballot questions
             
-            //extract unique election types
-            ElectionData.all = result
-            
-            for item in result
-            {
-                if(ElectionData.types.firstIndex(of: item.type) == nil)
-                {
-                    ElectionData.types.append(item.type)
-                }
-            }
+            tableEntries = ElectionData.filterUniqueAttributes(attribute: .type, data: ElectionData.all)
             tableView.reloadData()
         }
     }
@@ -62,7 +59,8 @@ class HomeVC: UIViewController
             if let vc = segue.destination as? ResultFilterVC
             {
                 let type = sender as! String
-                vc.electionResults = ElectionData.resultsMatching(type:type)
+                vc.navBar.title = type + "s"
+                vc.electionResults = ElectionData.resultsMatching(key: type, filter: .type, from: ElectionData.all)
             }
         }
     }

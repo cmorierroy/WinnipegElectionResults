@@ -12,9 +12,10 @@ class ResultFilterVC: UIViewController
 
     @IBOutlet weak var segControlView: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navBar: UINavigationItem!
     
     var electionResults:[ElectionResponse] = []
-    var uniqueAttributes:[String] = []
+    var tableEntries:[String] = []
     
     var segmentedControlSelectionIndex:Int
     {
@@ -30,12 +31,17 @@ class ResultFilterVC: UIViewController
         ElectionData.currentFilter = .date
         
         //reload data for table, default to dates filter
-        uniqueAttributes = ElectionData.filterUniqueAttributes(attribute: ElectionData.currentFilter, data: electionResults)
+        tableEntries = ElectionData.filterUniqueAttributes(attribute: ElectionData.currentFilter, data: electionResults)
         
         tableView.reloadData()
         
         //set up action for segmented control view
         segControlView.addTarget(self, action: #selector(changeFilter), for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     //MARK: Segmented Control Action
@@ -51,7 +57,7 @@ class ResultFilterVC: UIViewController
             ElectionData.currentFilter = ElectionData.Filters.area
         }
         
-        uniqueAttributes = ElectionData.filterUniqueAttributes(attribute: ElectionData.currentFilter, data: electionResults)
+        tableEntries = ElectionData.filterUniqueAttributes(attribute: ElectionData.currentFilter, data: electionResults)
         tableView.reloadData()
 
     }
@@ -59,11 +65,12 @@ class ResultFilterVC: UIViewController
     //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if(segue.identifier == "toLayer2")
+        if(segue.identifier == "toCollection")
         {
-            if let vc = segue.destination as? Layer2FilterVC
+            if let vc = segue.destination as? CollectionVC
             {
                 let key = sender as! String
+                vc.navBar.title = navBar.title! + " | " + key
                 vc.resultsForKey = ElectionData.resultsMatching(key: key, filter: ElectionData.currentFilter, from: electionResults)
             }
         }

@@ -12,6 +12,9 @@ class DetailVC: UIViewController {
 
     @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var barChart: BarChartView!
+    @IBOutlet weak var navBar: UINavigationItem!
+    @IBOutlet weak var subTitle: UILabel!
+    @IBOutlet weak var favouriteButton: UIButton!
     
     var chartTitle:String = ""
     var results:[ElectionResponse] = []
@@ -22,11 +25,7 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         
         //set up title label
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = chartTitle
-        
-        view.addSubview(title)
+        subTitle.text = chartTitle        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -47,6 +46,8 @@ class DetailVC: UIViewController {
             loadBarChart()
             barChart.animate(xAxisDuration: 1, yAxisDuration: 1)
         }
+        
+        
         
     }
     

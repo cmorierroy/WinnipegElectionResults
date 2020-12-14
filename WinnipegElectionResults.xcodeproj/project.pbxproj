@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		69241B7F5F50A7A266E5CF2A /* Pods_WinnipegElectionResults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B52C2DF3572A551A7016680 /* Pods_WinnipegElectionResults.framework */; };
 		8200857A25781F7C005D9814 /* FilteredTableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200857925781F7C005D9814 /* FilteredTableExtension.swift */; };
-		8200857E257873BF005D9814 /* Layer2FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200857D257873BF005D9814 /* Layer2FilterVC.swift */; };
 		8200858325797CCA005D9814 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200858225797CCA005D9814 /* DetailVC.swift */; };
 		8200858A25798AD8005D9814 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200858925798AD8005D9814 /* Colors.swift */; };
 		8215CCC62575A11000B76DFC /* WODClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215CCC52575A10F00B76DFC /* WODClient.swift */; };
@@ -19,6 +18,8 @@
 		824EF972257810A400F6D26D /* ResultFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF971257810A400F6D26D /* ResultFilterVC.swift */; };
 		8289280A2576D8640028F277 /* ElectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828928092576D8640028F277 /* ElectionData.swift */; };
 		8291C492258154070036AD1E /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C491258154060036AD1E /* PreferencesVC.swift */; };
+		8291C497258264E20036AD1E /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C496258264E20036AD1E /* CollectionVC.swift */; };
+		8291C49C2586C7100036AD1E /* TableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C49B2586C70F0036AD1E /* TableExtension.swift */; };
 		82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */; };
 		82B6E31F25757ABE00A8C9BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */; };
 		82B6E32125757ABE00A8C9BF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E32025757ABE00A8C9BF /* HomeVC.swift */; };
@@ -31,7 +32,6 @@
 /* Begin PBXFileReference section */
 		14C5DB6E2351965907AD0EB5 /* Pods-WinnipegElectionResults.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WinnipegElectionResults.debug.xcconfig"; path = "Target Support Files/Pods-WinnipegElectionResults/Pods-WinnipegElectionResults.debug.xcconfig"; sourceTree = "<group>"; };
 		8200857925781F7C005D9814 /* FilteredTableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredTableExtension.swift; sourceTree = "<group>"; };
-		8200857D257873BF005D9814 /* Layer2FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer2FilterVC.swift; sourceTree = "<group>"; };
 		8200858225797CCA005D9814 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		8200858925798AD8005D9814 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8215CCC52575A10F00B76DFC /* WODClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODClient.swift; sourceTree = "<group>"; };
@@ -41,6 +41,8 @@
 		824EF971257810A400F6D26D /* ResultFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFilterVC.swift; sourceTree = "<group>"; };
 		828928092576D8640028F277 /* ElectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionData.swift; sourceTree = "<group>"; };
 		8291C491258154060036AD1E /* PreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesVC.swift; path = PreferencesVC/PreferencesVC.swift; sourceTree = "<group>"; };
+		8291C496258264E20036AD1E /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		8291C49B2586C70F0036AD1E /* TableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableExtension.swift; sourceTree = "<group>"; };
 		82B6E31925757ABE00A8C9BF /* WinnipegElectionResults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WinnipegElectionResults.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,14 +75,6 @@
 				C410578DE03FB755C99C7BF7 /* Pods-WinnipegElectionResults.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		8200857C25787395005D9814 /* Layer2FilterVC */ = {
-			isa = PBXGroup;
-			children = (
-				8200857D257873BF005D9814 /* Layer2FilterVC.swift */,
-			);
-			path = Layer2FilterVC;
 			sourceTree = "<group>";
 		};
 		8200858125797CAF005D9814 /* DetailVC */ = {
@@ -139,11 +133,12 @@
 		828928062576D7AE0028F277 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8291C495258264C90036AD1E /* CollectionVC */,
 				8200858125797CAF005D9814 /* DetailVC */,
-				8200857C25787395005D9814 /* Layer2FilterVC */,
 				824EF975257817E900F6D26D /* ResultFilterVC */,
 				824EF9742578176800F6D26D /* HomeVC */,
 				8291C491258154060036AD1E /* PreferencesVC.swift */,
+				8291C49B2586C70F0036AD1E /* TableExtension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,6 +161,14 @@
 				82B6E32A25757AC100A8C9BF /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		8291C495258264C90036AD1E /* CollectionVC */ = {
+			isa = PBXGroup;
+			children = (
+				8291C496258264E20036AD1E /* CollectionVC.swift */,
+			);
+			path = CollectionVC;
 			sourceTree = "<group>";
 		};
 		82B6E31025757ABE00A8C9BF = {
@@ -323,8 +326,9 @@
 			files = (
 				8291C492258154070036AD1E /* PreferencesVC.swift in Sources */,
 				82B6E32125757ABE00A8C9BF /* HomeVC.swift in Sources */,
-				8200857E257873BF005D9814 /* Layer2FilterVC.swift in Sources */,
+				8291C497258264E20036AD1E /* CollectionVC.swift in Sources */,
 				8200858325797CCA005D9814 /* DetailVC.swift in Sources */,
+				8291C49C2586C7100036AD1E /* TableExtension.swift in Sources */,
 				8200858A25798AD8005D9814 /* Colors.swift in Sources */,
 				82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */,
 				824EF96F2576E90000F6D26D /* CustomTableCell.swift in Sources */,
