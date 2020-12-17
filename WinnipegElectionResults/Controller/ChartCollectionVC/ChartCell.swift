@@ -1,89 +1,24 @@
 //
-//  DetailVC.swift
+//  File.swift
 //  WinnipegElectionResults
 //
-//  Created by Cédric Morier-Roy on 2020-12-03.
+//  Created by Cédric Morier-Roy on 2020-12-15.
 //
 
+import Foundation
 import UIKit
 import Charts
 
-class DetailVC: UIViewController
+class ChartCell : UICollectionViewCell
 {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var barChart: BarChartView!
-    @IBOutlet weak var navBar: UINavigationItem!
-    @IBOutlet weak var subTitle: UILabel!
-    @IBOutlet weak var favouriteButton: UIButton!
     
-    var chartTitle:String = ""
     var results:[ElectionResponse] = []
-    var favorited:Bool = false
     
-    @IBAction func favButtonPressed(_ sender: Any)
-    {
-        favouriteButton.isSelected = !favouriteButton.isSelected
-    }
-    
-    //MARK: LIFECYCLE f(x)s
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        
-        //set up title label
-        subTitle.text = chartTitle
-        
-        setupFavoriteButton()
-    }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(animated)
-        
-        if(UserDefaults.standard.string(forKey: "ChartType") == "pie")
-        {
-            barChart.isHidden = true
-            pieChart.isHidden = false
-            loadPieChart()
-            pieChart.animate(xAxisDuration: 1, yAxisDuration: 1)
-        }
-        else
-        {
-            barChart.isHidden = false
-            pieChart.isHidden = true
-            loadBarChart()
-            barChart.animate(xAxisDuration: 1, yAxisDuration: 1)
-        }
-    }
-    
-    func setupFavoriteButton()
-    {
-        //set image for states
-        favouriteButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
-        favouriteButton.setImage(UIImage(systemName:"star"), for: .normal)
-        
-        //Favourite button customization
-        favouriteButton.layer.borderWidth = 1
-        favouriteButton.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-        favouriteButton.backgroundColor = UIColor(cgColor: CGColor(gray: 0, alpha: 0.2))
-        //favouriteButton.layer.cornerRadius = favouriteButton.frame.height/3
-        favouriteButton.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.25)
-        favouriteButton.layer.masksToBounds = false
-        favouriteButton.layer.shadowRadius = 5
-        favouriteButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-        favouriteButton.layer.shadowOpacity = 1
-    }
-    
-    //MARK: PIE CHART f(x)s
     func loadPieChart()
     {
-        
-        //needed attributes:
-        //title
-        //subtitle
-        //dataPoints
-        //
-        
         var dataPoints:[String] = []
         var values:[Double] = []
         
@@ -112,7 +47,7 @@ class DetailVC: UIViewController
         format.numberStyle = .decimal
         let formatter = DefaultValueFormatter(formatter: format)
         pieChartData.setValueFormatter(formatter)
-        pieChartData.setValueTextColor(.black)
+        pieChartData.setValueTextColor(.clear)
         
         //Assign it to the chart’s data
         
@@ -125,9 +60,15 @@ class DetailVC: UIViewController
         
         //customize legend
         pieChart.legend.textColor = .black
+        pieChart.legend.setCustom(entries: [])
+        pieChart.drawEntryLabelsEnabled = false
+        
+        //customize center text/labels
+        
+        
+        pieChart.animate(xAxisDuration: 1, yAxisDuration: 1)
     }
     
-    //MARK: BAR CHART f(x)s
     func loadBarChart()
     {
         var dataPoints:[String] = []
@@ -159,7 +100,9 @@ class DetailVC: UIViewController
             legendEntries.append(entry)
         }
 
-        barChart.legend.setCustom(entries: legendEntries)
+//        barChart.legend.setCustom(entries: legendEntries)
+        barChart.legend.setCustom(entries: [])
+
         
         //Set ChartDataSet
         let barChartDataSet = BarChartDataSet(entries: dataEntries, label: nil)
@@ -184,5 +127,8 @@ class DetailVC: UIViewController
         
         //customize legend
         barChart.legend.textColor = .black
+        
+        //animate chart
+        barChart.animate(xAxisDuration: 1, yAxisDuration: 1)
     }
 }

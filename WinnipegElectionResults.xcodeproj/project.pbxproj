@@ -22,6 +22,8 @@
 		8291C492258154070036AD1E /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C491258154060036AD1E /* PreferencesVC.swift */; };
 		8291C497258264E20036AD1E /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C496258264E20036AD1E /* CollectionVC.swift */; };
 		8291C49C2586C7100036AD1E /* TableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C49B2586C70F0036AD1E /* TableExtension.swift */; };
+		82B44675258965720000C54F /* ChartCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B44674258965720000C54F /* ChartCollectionVC.swift */; };
+		82B4467A258965E90000C54F /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B44679258965E90000C54F /* ChartCell.swift */; };
 		82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */; };
 		82B6E31F25757ABE00A8C9BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */; };
 		82B6E32125757ABE00A8C9BF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E32025757ABE00A8C9BF /* HomeVC.swift */; };
@@ -47,6 +49,8 @@
 		8291C491258154060036AD1E /* PreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesVC.swift; path = PreferencesVC/PreferencesVC.swift; sourceTree = "<group>"; };
 		8291C496258264E20036AD1E /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		8291C49B2586C70F0036AD1E /* TableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableExtension.swift; sourceTree = "<group>"; };
+		82B44674258965720000C54F /* ChartCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCollectionVC.swift; sourceTree = "<group>"; };
+		82B44679258965E90000C54F /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		82B6E31925757ABE00A8C9BF /* WinnipegElectionResults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WinnipegElectionResults.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,13 +150,12 @@
 		828928062576D7AE0028F277 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				82B446732589650B0000C54F /* ChartCollectionVC */,
+				8200858125797CAF005D9814 /* DetailVC */,
 				824EF9742578176800F6D26D /* HomeVC */,
 				824EF975257817E900F6D26D /* ResultFilterVC */,
-				8291C495258264C90036AD1E /* CollectionVC */,
-				8200858125797CAF005D9814 /* DetailVC */,
 				8291C491258154060036AD1E /* PreferencesVC.swift */,
 				8291C49B2586C70F0036AD1E /* TableExtension.swift */,
-				823FAD2325871EE700127333 /* SavedResultsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,12 +180,15 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		8291C495258264C90036AD1E /* CollectionVC */ = {
+		82B446732589650B0000C54F /* ChartCollectionVC */ = {
 			isa = PBXGroup;
 			children = (
+				82B44674258965720000C54F /* ChartCollectionVC.swift */,
+				823FAD2325871EE700127333 /* SavedResultsVC.swift */,
 				8291C496258264E20036AD1E /* CollectionVC.swift */,
+				82B44679258965E90000C54F /* ChartCell.swift */,
 			);
-			path = CollectionVC;
+			path = ChartCollectionVC;
 			sourceTree = "<group>";
 		};
 		82B6E31025757ABE00A8C9BF = {
@@ -339,9 +345,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8291C492258154070036AD1E /* PreferencesVC.swift in Sources */,
+				82B44675258965720000C54F /* ChartCollectionVC.swift in Sources */,
 				82B6E32125757ABE00A8C9BF /* HomeVC.swift in Sources */,
 				8291C497258264E20036AD1E /* CollectionVC.swift in Sources */,
 				8200858325797CCA005D9814 /* DetailVC.swift in Sources */,
+				82B4467A258965E90000C54F /* ChartCell.swift in Sources */,
 				8291C49C2586C7100036AD1E /* TableExtension.swift in Sources */,
 				8200858A25798AD8005D9814 /* Colors.swift in Sources */,
 				82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */,
