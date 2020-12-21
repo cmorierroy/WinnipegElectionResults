@@ -1,26 +1,37 @@
 //
-//  SavedResultsVC.swift
+//  FavoriesVC.swift
 //  WinnipegElectionResults
 //
 //  Created by Cédric Morier-Roy on 2020-12-13.
 //
 
 import UIKit
+import CoreData
 
-class SavedResultsVC: ChartCollectionVC
+class FavoritesVC: ChartCollectionVC
 {
+    var fetchedResultsController:NSFetchedResultsController<Favorite>!
+    var favorites:[Favorite]? = nil
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        setupFetchedResultsController()
+        
         //MARK: get attributes from coredata (title)
-        uniqueAttributes = ["1","2","3"]//ElectionData.filterUniqueAttributes(attribute: filter, data: resultsForKey)
+        favorites = getFavorites()
+        uniqueAttributes = getFavoriteTitles(favorites:favorites)
+        
+        //retrieve all results that match given favourites
         collectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated:Bool)
     {
         super.viewWillAppear(animated)
+        favorites = getFavorites()
+        uniqueAttributes = getFavoriteTitles(favorites:favorites)
         collectionView.reloadData()
     }
     
@@ -60,8 +71,6 @@ class SavedResultsVC: ChartCollectionVC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        print(indexPath.row)
-        
         //MARK: needs adjustment
         var key:String
         
@@ -70,22 +79,58 @@ class SavedResultsVC: ChartCollectionVC
         performSegue(withIdentifier: "toDetailVC", sender: key)
         //reload to show highlight
         //collectionView.reloadItems(at: [indexPath])
+    }
+    
+    func getFavoriteTitles(favorites:[Favorite]?) -> [String]
+    {
+        var titles:[String] = []
         
-        //segue to MLADetailVC
-        //performSegue(withIdentifier: "toMLADetailVC", sender: nil)
+        if let favorites = favorites
+        {
+            
+            for item in favorites
+            {
+                let type = item.type ?? ""
+                let date = item.date ?? ""
+                let area = item.area ?? ""
+                titles.append(type + " | " + date + " | " + area)
+            }
+            
+        }
         
-        //delete it from view controller
-//        images.remove(at: indexPath.row)
-//
-//        //delete a image from collection if tapped
-//        collectionView.deleteItems(at: [indexPath])
-//
-//        //MARK: delete image from CoreData
-//        let photo = fetchedResultsController.object(at: indexPath)
-//        DataController.shared.viewContext.delete(photo)
-//        DataController.shared.saveContext()
-//
-//        updateFetchResultsController()
+        return titles
+    }
+    
+    //MARK: COREDATA
+    fileprivate func setupFetchedResultsController()
+    {
+        let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        fetchRequest.sortDescriptors = []
+
+       fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: "favorites")
+
+    }
+    
+    func getFavorites() -> [Favorite]?
+    {
+        var favorites:[Favorite]? = nil
+        
+        do
+        {
+            try fetchedResultsController.performFetch()
+
+            //get the only last update object (needs to be coded better)
+            if let objects = fetchedResultsController.fetchedObjects
+            {
+                favorites = objects
+            }
+        }
+        catch
+        {
+            fatalError("The fetch could not be performed: \(error.localizedDescription)")
+        }
+        
+        return favorites
     }
     
 }

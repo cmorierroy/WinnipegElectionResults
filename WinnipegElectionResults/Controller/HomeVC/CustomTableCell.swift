@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-
-
 class CustomTableCell : UITableViewCell
 {
     var titleLabel: UILabel = UILabel()

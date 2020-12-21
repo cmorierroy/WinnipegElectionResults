@@ -12,6 +12,7 @@ class CollectionVC: ChartCollectionVC
 {
     @IBOutlet weak var navBar: UINavigationItem!
     
+    var key:ResultKey = ResultKey(type: "", date: "", area: "")
     var filter:ElectionData.Filters
     {
         switch(ElectionData.currentFilter)
@@ -25,6 +26,17 @@ class CollectionVC: ChartCollectionVC
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //setup title:
+        var titlePart2:String = ""
+        switch(ElectionData.currentFilter)
+        {
+        case .date: titlePart2 = key.date
+        case .area: titlePart2 = key.area
+        default: print("Error in CollectionVC viewDidLoad()")
+        }
+        
+        navBar.title = key.type + " | " + titlePart2
         
         uniqueAttributes = ElectionData.filterUniqueAttributes(attribute: filter, data: resultsForKey)
         collectionView.reloadData()
@@ -42,10 +54,17 @@ class CollectionVC: ChartCollectionVC
         {
             if let vc = segue.destination as? DetailVC
             {
-                let key = sender as! String
-                vc.navBar.title = navBar.title!
-                vc.chartTitle = key
-                vc.results = ElectionData.resultsMatching(key: key, filter: filter, from: resultsForKey)
+                let value = sender as! String
+                switch(filter)
+                {
+                case .area: key.area = value
+                case .date: key.date = value
+                default: print("Error in CollectionVC prepare()")
+                }
+                
+                vc.key = key
+                
+                vc.results = ElectionData.resultsMatching(key: value, filter: filter, from: resultsForKey)
             }
         }
     }

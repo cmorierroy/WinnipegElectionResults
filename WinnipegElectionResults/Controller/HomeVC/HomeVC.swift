@@ -10,7 +10,6 @@ import CoreData
 
 class HomeVC: UIViewController
 {
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableLabel: UILabel!
@@ -151,7 +150,7 @@ class HomeVC: UIViewController
             if let vc = segue.destination as? ResultFilterVC
             {
                 let type = sender as! String
-                vc.navBar.title = type + "s"
+                vc.key = ResultKey(type: type, date: "", area: "")
                 vc.electionResults = ElectionData.resultsMatching(key: type, filter: .type, from: ElectionData.all)
             }
         }

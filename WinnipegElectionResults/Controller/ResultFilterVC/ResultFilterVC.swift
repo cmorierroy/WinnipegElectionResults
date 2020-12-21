@@ -16,6 +16,7 @@ class ResultFilterVC: UIViewController
     
     var electionResults:[ElectionResponse] = []
     var tableEntries:[String] = []
+    var key:ResultKey = ResultKey(type: "", date: "", area: "")
     
     var segmentedControlSelectionIndex:Int
     {
@@ -29,6 +30,8 @@ class ResultFilterVC: UIViewController
 
         //when first loading view, default to date filter
         ElectionData.currentFilter = .date
+        
+        navBar.title = key.type + "s"
         
         //reload data for table, default to dates filter
         tableEntries = ElectionData.filterUniqueAttributes(attribute: ElectionData.currentFilter, data: electionResults)
@@ -69,9 +72,16 @@ class ResultFilterVC: UIViewController
         {
             if let vc = segue.destination as? CollectionVC
             {
-                let key = sender as! String
-                vc.navBar.title = navBar.title! + " | " + key
-                vc.resultsForKey = ElectionData.resultsMatching(key: key, filter: ElectionData.currentFilter, from: electionResults)
+                let value = sender as! String
+                switch(ElectionData.currentFilter)
+                {
+                case .area: key.area = value
+                case .date: key.date = value
+                case .type: print("Error: filter problem in ResultFilter prepare()")
+                }
+    
+                vc.key = key
+                vc.resultsForKey = ElectionData.resultsMatching(key: value, filter: ElectionData.currentFilter, from: electionResults)
             }
         }
     }

@@ -14,10 +14,11 @@
 		8215CCC62575A11000B76DFC /* WODClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215CCC52575A10F00B76DFC /* WODClient.swift */; };
 		8215CCCA2575A16A00B76DFC /* ElectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215CCC92575A16A00B76DFC /* ElectionResponse.swift */; };
 		823FAD202586EE5500127333 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823FAD1F2586EE5500127333 /* DataController.swift */; };
-		823FAD2425871EE800127333 /* SavedResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823FAD2325871EE700127333 /* SavedResultsVC.swift */; };
+		823FAD2425871EE800127333 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823FAD2325871EE700127333 /* FavoritesVC.swift */; };
 		824EF96C2576E55100F6D26D /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF96B2576E55000F6D26D /* TableViewExtension.swift */; };
 		824EF96F2576E90000F6D26D /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF96E2576E90000F6D26D /* CustomTableCell.swift */; };
 		824EF972257810A400F6D26D /* ResultFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824EF971257810A400F6D26D /* ResultFilterVC.swift */; };
+		827C14FF259138F6007C43A2 /* ResultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C14FE259138F6007C43A2 /* ResultKey.swift */; };
 		8289280A2576D8640028F277 /* ElectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828928092576D8640028F277 /* ElectionData.swift */; };
 		8291C492258154070036AD1E /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C491258154060036AD1E /* PreferencesVC.swift */; };
 		8291C497258264E20036AD1E /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C496258264E20036AD1E /* CollectionVC.swift */; };
@@ -41,10 +42,11 @@
 		8215CCC52575A10F00B76DFC /* WODClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODClient.swift; sourceTree = "<group>"; };
 		8215CCC92575A16A00B76DFC /* ElectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionResponse.swift; sourceTree = "<group>"; };
 		823FAD1F2586EE5500127333 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		823FAD2325871EE700127333 /* SavedResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedResultsVC.swift; sourceTree = "<group>"; };
+		823FAD2325871EE700127333 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		824EF96B2576E55000F6D26D /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		824EF96E2576E90000F6D26D /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
 		824EF971257810A400F6D26D /* ResultFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFilterVC.swift; sourceTree = "<group>"; };
+		827C14FE259138F6007C43A2 /* ResultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultKey.swift; sourceTree = "<group>"; };
 		828928092576D8640028F277 /* ElectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionData.swift; sourceTree = "<group>"; };
 		8291C491258154060036AD1E /* PreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesVC.swift; path = PreferencesVC/PreferencesVC.swift; sourceTree = "<group>"; };
 		8291C496258264E20036AD1E /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
@@ -114,8 +116,8 @@
 		824EF9742578176800F6D26D /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
-				824EF96E2576E90000F6D26D /* CustomTableCell.swift */,
 				82B6E32025757ABE00A8C9BF /* HomeVC.swift */,
+				824EF96E2576E90000F6D26D /* CustomTableCell.swift */,
 				824EF96B2576E55000F6D26D /* TableViewExtension.swift */,
 			);
 			path = HomeVC;
@@ -135,6 +137,7 @@
 			children = (
 				823FAD1E2586EE3800127333 /* CoreData */,
 				828928092576D8640028F277 /* ElectionData.swift */,
+				827C14FE259138F6007C43A2 /* ResultKey.swift */,
 				8200858925798AD8005D9814 /* Colors.swift */,
 			);
 			path = Model;
@@ -150,10 +153,10 @@
 		828928062576D7AE0028F277 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				82B446732589650B0000C54F /* ChartCollectionVC */,
-				8200858125797CAF005D9814 /* DetailVC */,
 				824EF9742578176800F6D26D /* HomeVC */,
 				824EF975257817E900F6D26D /* ResultFilterVC */,
+				82B446732589650B0000C54F /* ChartCollectionVC */,
+				8200858125797CAF005D9814 /* DetailVC */,
 				8291C491258154060036AD1E /* PreferencesVC.swift */,
 				8291C49B2586C70F0036AD1E /* TableExtension.swift */,
 			);
@@ -183,9 +186,9 @@
 		82B446732589650B0000C54F /* ChartCollectionVC */ = {
 			isa = PBXGroup;
 			children = (
-				82B44674258965720000C54F /* ChartCollectionVC.swift */,
-				823FAD2325871EE700127333 /* SavedResultsVC.swift */,
 				8291C496258264E20036AD1E /* CollectionVC.swift */,
+				823FAD2325871EE700127333 /* FavoritesVC.swift */,
+				82B44674258965720000C54F /* ChartCollectionVC.swift */,
 				82B44679258965E90000C54F /* ChartCell.swift */,
 			);
 			path = ChartCollectionVC;
@@ -355,12 +358,13 @@
 				82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */,
 				823FAD202586EE5500127333 /* DataController.swift in Sources */,
 				824EF96F2576E90000F6D26D /* CustomTableCell.swift in Sources */,
-				823FAD2425871EE800127333 /* SavedResultsVC.swift in Sources */,
+				823FAD2425871EE800127333 /* FavoritesVC.swift in Sources */,
 				82B6E32725757ABE00A8C9BF /* WinnipegElectionResults.xcdatamodeld in Sources */,
 				824EF96C2576E55100F6D26D /* TableViewExtension.swift in Sources */,
 				8200857A25781F7C005D9814 /* FilteredTableExtension.swift in Sources */,
 				824EF972257810A400F6D26D /* ResultFilterVC.swift in Sources */,
 				8289280A2576D8640028F277 /* ElectionData.swift in Sources */,
+				827C14FF259138F6007C43A2 /* ResultKey.swift in Sources */,
 				8215CCC62575A11000B76DFC /* WODClient.swift in Sources */,
 				82B6E31F25757ABE00A8C9BF /* SceneDelegate.swift in Sources */,
 				8215CCCA2575A16A00B76DFC /* ElectionResponse.swift in Sources */,

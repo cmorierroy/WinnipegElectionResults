@@ -7,6 +7,7 @@
 
 import UIKit
 import Charts
+import CoreData
 
 class DetailVC: UIViewController
 {
@@ -17,11 +18,72 @@ class DetailVC: UIViewController
     @IBOutlet weak var favouriteButton: UIButton!
     
     var chartTitle:String = ""
+    var key:ResultKey = ResultKey(type: "", date: "", area: "")
     var results:[ElectionResponse] = []
-    var favorited:Bool = false
+    var favorite:Favorite? = nil
+    
+    func retrieveResultFromCoreData() -> Favorite?
+    {
+        //remove from favourites
+        //        //MARK: delete image from CoreData
+        let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        let typePredicate = NSPredicate(format:"type = %@", key.type)
+        let datePredicate = NSPredicate(format:"date = %@", key.date)
+        let areaPredicate = NSPredicate(format:"area = %@", key.area)
+        
+        var subPredicates:[NSPredicate] = []
+        subPredicates.append(typePredicate)
+        subPredicates.append(datePredicate)
+        subPredicates.append(areaPredicate)
+        
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: subPredicates)
+        fetchRequest.sortDescriptors = []
+        
+        do
+        {
+            let result = try DataController.shared.viewContext.fetch(fetchRequest)
+            
+            if result.count > 0
+            {
+                return result[0]
+            }
+            else
+            {
+                return nil
+            }
+        }
+        catch
+        {
+            print("Error in DetailVC retrieveResultFromCoreData")
+            return nil
+        }
+    }
     
     @IBAction func favButtonPressed(_ sender: Any)
     {
+        if(favouriteButton.isSelected)
+        {
+            print("removing from favorites...\(key.date),\(key.type),\(key.area)")
+            if let favorite = favorite
+            {
+                DataController.shared.viewContext.delete(favorite)
+            }
+
+        }
+        else
+        {
+            //add to favourites
+            print("adding to favourites...\(key.date),\(key.type),\(key.area)")
+            let favorite = Favorite(context: DataController.shared.viewContext)
+            favorite.date = key.date
+            favorite.type = key.type
+            favorite.area = key.area
+        }
+        
+        //save context
+        DataController.shared.saveContext()
+        
+        //toggle button to opposite state
         favouriteButton.isSelected = !favouriteButton.isSelected
     }
     
@@ -30,10 +92,21 @@ class DetailVC: UIViewController
     {
         super.viewDidLoad()
         
-        //set up title label
-        subTitle.text = chartTitle
+        favorite = retrieveResultFromCoreData()
         
         setupFavoriteButton()
+        
+        switch(ElectionData.currentFilter)
+        {
+        case .area:
+            navBar.title = key.type + " | " + key.area
+            subTitle.text = key.date
+        case .date:
+            navBar.title = key.type + " | " + key.date
+            subTitle.text = key.area
+        default: print("Error in DetailVC viewDidLoad()")
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -72,18 +145,20 @@ class DetailVC: UIViewController
         favouriteButton.layer.shadowRadius = 5
         favouriteButton.layer.shadowOffset = CGSize(width: 0, height: 0)
         favouriteButton.layer.shadowOpacity = 1
+        
+        if favorite != nil
+        {
+            favouriteButton.isSelected = true
+        }
+        else
+        {
+            favouriteButton.isSelected = false
+        }
     }
     
     //MARK: PIE CHART f(x)s
     func loadPieChart()
     {
-        
-        //needed attributes:
-        //title
-        //subtitle
-        //dataPoints
-        //
-        
         var dataPoints:[String] = []
         var values:[Double] = []
         

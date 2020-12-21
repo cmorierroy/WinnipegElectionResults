@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="-1972" y="467"/>
         </scene>
-        <!--My Saved Results-->
+        <!--Favorites-->
         <scene sceneID="QSe-ZJ-AjE">
             <objects>
-                <viewController id="aYt-Nm-zTP" customClass="SavedResultsVC" customModule="WinnipegElectionResults" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aYt-Nm-zTP" customClass="FavoritesVC" customModule="WinnipegElectionResults" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="evA-d3-MLa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,7 +186,7 @@
                             <constraint firstItem="dhf-QL-3nc" firstAttribute="trailing" secondItem="Gkl-wL-UkJ" secondAttribute="trailing" id="j1O-dv-J8j"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Saved Results" image="star.fill" catalog="system" id="ztc-Ff-sbt">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star.fill" catalog="system" id="ztc-Ff-sbt">
                         <color key="badgeColor" red="0.99671262500000002" green="0.95924669500000004" blue="0.60387462380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <connections>
@@ -237,7 +237,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ycX-XN-Y4G">
-                                <rect key="frame" x="5" y="359" width="404" height="354"/>
+                                <rect key="frame" x="5" y="359" width="404" height="415"/>
                                 <color key="backgroundColor" red="0.99671262500000002" green="0.95924669500000004" blue="0.60387462380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.96125115189999999" blue="0.56142414969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -264,15 +264,15 @@
                             <constraint firstItem="UB9-lJ-2dP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="110" id="G4S-AC-Bbz"/>
                             <constraint firstItem="EnE-DK-eH4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jcn-K7-Rt4"/>
                             <constraint firstItem="UB9-lJ-2dP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Nen-PW-bNC"/>
+                            <constraint firstItem="utK-fJ-Eag" firstAttribute="top" secondItem="ycX-XN-Y4G" secondAttribute="bottom" constant="8" id="UeP-u1-tc9"/>
                             <constraint firstItem="EnE-DK-eH4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bL5-Yc-No4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="utK-fJ-Eag" secondAttribute="bottom" constant="10" id="f6k-xU-nYQ"/>
-                            <constraint firstItem="Ud4-gv-I30" firstAttribute="top" secondItem="UB9-lJ-2dP" secondAttribute="bottom" constant="100" id="gyb-Bh-8M4"/>
                             <constraint firstItem="utK-fJ-Eag" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jxT-cP-ntp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ycX-XN-Y4G" secondAttribute="bottom" constant="100" id="lmj-0B-7dB"/>
                             <constraint firstItem="ycX-XN-Y4G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="pjL-ax-DA8"/>
                             <constraint firstItem="Ud4-gv-I30" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="syF-p1-IUl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UB9-lJ-2dP" secondAttribute="trailing" id="vAz-TN-V4f"/>
                             <constraint firstItem="ycX-XN-Y4G" firstAttribute="top" secondItem="Ud4-gv-I30" secondAttribute="bottom" id="vZn-Al-U23"/>
+                            <constraint firstItem="Ud4-gv-I30" firstAttribute="top" secondItem="UB9-lJ-2dP" secondAttribute="bottom" constant="100" id="xFF-iu-2vw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ycX-XN-Y4G" secondAttribute="trailing" constant="5" id="xpf-Kz-JJt"/>
                         </constraints>
                     </view>
@@ -289,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-206" y="-333"/>
+            <point key="canvasLocation" x="-207.24637681159422" y="-333.48214285714283"/>
         </scene>
         <!--Result FilterVC-->
         <scene sceneID="OGR-im-7wJ">

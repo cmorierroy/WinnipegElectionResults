@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="BarChart" representedClassName="BarChart" parentEntity="Chart" syncable="YES" codeGenerationType="class"/>
-    <entity name="Chart" representedClassName="Chart" syncable="YES" codeGenerationType="class">
-        <attribute name="subtitle" optional="YES" attributeType="String" defaultValueString=""/>
-        <attribute name="title" optional="YES" attributeType="String" defaultValueString=""/>
+    <entity name="Favorite" representedClassName="Favorite" syncable="YES" codeGenerationType="class">
+        <attribute name="area" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
     <entity name="LastUpdate" representedClassName="LastUpdate" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="PieChart" representedClassName="PieChart" parentEntity="Chart" syncable="YES" codeGenerationType="class"/>
     <elements>
         <element name="LastUpdate" positionX="-108.828125" positionY="-19.703125" width="128" height="58"/>
-        <element name="Chart" positionX="120.3359375" positionY="-101.46875" width="128" height="73"/>
-        <element name="BarChart" positionX="86.11328125" positionY="-5.6875" width="128" height="43"/>
-        <element name="PieChart" positionX="245.5" positionY="-12.5859375" width="128" height="43"/>
+        <element name="Favorite" positionX="70.21484375" positionY="-11.84375" width="128" height="88"/>
     </elements>
 </model>
