@@ -12,26 +12,21 @@ class FavoritesVC: ChartCollectionVC
 {
     var fetchedResultsController:NSFetchedResultsController<Favorite>!
     var favorites:[Favorite]? = nil
+    var dataMatches:[[ElectionResponse]] = []
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         setupFetchedResultsController()
-        
-        //MARK: get attributes from coredata (title)
-        favorites = getFavorites()
-        uniqueAttributes = getFavoriteTitles(favorites:favorites)
-        
-        //retrieve all results that match given favourites
+        updateFavorites()
         collectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated:Bool)
     {
         super.viewWillAppear(animated)
-        favorites = getFavorites()
-        uniqueAttributes = getFavoriteTitles(favorites:favorites)
+        updateFavorites()
         collectionView.reloadData()
     }
     
@@ -41,7 +36,7 @@ class FavoritesVC: ChartCollectionVC
         
         //SETUP CHART ON CELL
         //MARK: GET DATA FROM COREDATA?
-        cell.results = []//ElectionData.resultsMatching(key: uniqueAttributes[indexPath.row], filter: filter, from: resultsForKey)
+        cell.results = dataMatches[indexPath.row]
         
         //setup pie or bar chart
         if(UserDefaults.standard.string(forKey: "ChartType") == "pie")
@@ -99,6 +94,22 @@ class FavoritesVC: ChartCollectionVC
         }
         
         return titles
+    }
+    
+    func updateFavorites()
+    {
+        dataMatches = []
+
+        if let favorites = getFavorites()
+        {
+            uniqueAttributes = getFavoriteTitles(favorites:favorites)
+            
+            //retrieve all results that match given favourites
+            for item in favorites
+            {
+                dataMatches.append(ElectionData.resultsMatching(type: item.type ?? "", date: item.date ?? "", area: item.area ?? ""))
+            }
+        }
     }
     
     //MARK: COREDATA

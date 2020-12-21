@@ -79,6 +79,34 @@ class ElectionData
         return results
     }
     
+    class func resultsMatching(type:String, date:String, area: String) -> [ElectionResponse]
+    {
+        var results:[ElectionResponse] = []
+        
+        for item in all
+        {
+            if(item.type != type)
+            {
+                continue
+            }
+            
+            if(item.date != date)
+            {
+                continue
+            }
+            
+            if(item.area != area)
+            {
+                continue
+            }
+            
+            results.append(item)
+            
+        }
+        
+        return results
+    }
+    
     //MARK: SET MAKING f(x)s
     //extract all unique attributes from given data
     class func filterUniqueAttributes(attribute:Filters, data: [ElectionResponse]) -> [String]
