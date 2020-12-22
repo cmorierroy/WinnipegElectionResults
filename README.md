@@ -18,7 +18,10 @@ It is an attempt at making information about Winnipeg's municipal elections very
 
 ## Project Dependencies
 All dependencies are installed with cocoapods and contained in the podfile. <br>
-*Charts*: For presenting scraped data. <br>
+*Charts*: For presenting election data. <br>
+
+Winnipeg Open Data API — Election Results dataset: <br>
+https://data.winnipeg.ca/Council-Services/Winnipeg-Election-Results/7753-3fjc<br>
 
 If you are attempting to build this in Xcode, build it from the WinnipegElectionResults.xworkspace file.
 
