@@ -72,7 +72,11 @@ class CollectionVC: ChartCollectionVC
     //MARK: Collection VIEW OVERRIDES
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! ChartCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCell
+        
+        //SETUP TITLE ON CELL
+        cell.titleLabel?.text = uniqueAttributes[indexPath.row]
+        cell.titleLabel?.textColor = UIColor.AppTheme.paleYellow
         
         //SETUP CHART ON CELL
         //MARK: fix
@@ -105,9 +109,7 @@ class CollectionVC: ChartCollectionVC
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    {
-        print(indexPath.row)
-        
+    {        
         //MARK: needs adjustment
         var key:String
         

@@ -14,49 +14,39 @@ class DetailVC: UIViewController
     @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var barChart: BarChartView!
     @IBOutlet weak var navBar: UINavigationItem!
-    @IBOutlet weak var subTitle: UILabel!
+    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var favouriteButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
     var chartTitle:String = ""
     var key:ResultKey = ResultKey(type: "", date: "", area: "")
     var results:[ElectionResponse] = []
     var favorite:Favorite? = nil
     
-    func retrieveResultFromCoreData() -> Favorite?
+    //MARK: IBACTIONS
+    @IBAction func shareButtonPressed(_ sender: Any)
     {
-        //remove from favourites
-        //        //MARK: delete image from CoreData
-        let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
-        let typePredicate = NSPredicate(format:"type = %@", key.type)
-        let datePredicate = NSPredicate(format:"date = %@", key.date)
-        let areaPredicate = NSPredicate(format:"area = %@", key.area)
+        // Render view to an image
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: false)
+        let chartImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
         
-        var subPredicates:[NSPredicate] = []
-        subPredicates.append(typePredicate)
-        subPredicates.append(datePredicate)
-        subPredicates.append(areaPredicate)
-        
-        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: subPredicates)
-        fetchRequest.sortDescriptors = []
-        
-        do
-        {
-            let result = try DataController.shared.viewContext.fetch(fetchRequest)
-            
-            if result.count > 0
+        let controller = UIActivityViewController(activityItems:[chartImage], applicationActivities: nil)
+                
+        controller.completionWithItemsHandler =
             {
-                return result[0]
+                (activity, success, items, error) in
+                if success
+                {
+                    print("success")
+                }
             }
-            else
-            {
-                return nil
-            }
-        }
-        catch
-        {
-            print("Error in DetailVC retrieveResultFromCoreData")
-            return nil
-        }
+        
+        //pop up controller
+        present(controller, animated: true, completion: nil)
     }
     
     @IBAction func favButtonPressed(_ sender: Any)
@@ -95,18 +85,13 @@ class DetailVC: UIViewController
         favorite = retrieveResultFromCoreData()
         
         setupFavoriteButton()
+        setupShareButton()
         
-        switch(ElectionData.currentFilter)
-        {
-        case .area:
-            navBar.title = key.type + " | " + key.area
-            subTitle.text = key.date
-        case .date:
-            navBar.title = key.type + " | " + key.date
-            subTitle.text = key.area
-        default: print("Error in DetailVC viewDidLoad()")
-        }
+        navBar.title = "Results For:"
         
+        areaLabel.text = key.area
+        dateLabel.text = key.date
+        typeLabel.text = key.type
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -156,6 +141,20 @@ class DetailVC: UIViewController
         }
     }
     
+    func setupShareButton()
+    {
+        //Favourite button customization
+        shareButton.layer.borderWidth = 1
+        shareButton.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        shareButton.backgroundColor = UIColor(cgColor: CGColor(gray: 0, alpha: 0.2))
+        //favouriteButton.layer.cornerRadius = favouriteButton.frame.height/3
+        shareButton.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+        shareButton.layer.masksToBounds = false
+        shareButton.layer.shadowRadius = 5
+        shareButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        shareButton.layer.shadowOpacity = 1
+    }
+    
     //MARK: PIE CHART f(x)s
     func loadPieChart()
     {
@@ -193,7 +192,7 @@ class DetailVC: UIViewController
         
         //CUSTOMIZATION OF PIE CHART
         pieChart.entryLabelColor = .black
-        pieChart.centerText = "Democratic score:..."
+        //pieChart.centerText = "Democratic score:..."
         pieChart.holeColor = UIColor.AppTheme.paleYellow
         pieChart.data = pieChartData
         pieChart.backgroundColor = UIColor.AppTheme.paleYellow
@@ -259,5 +258,41 @@ class DetailVC: UIViewController
         
         //customize legend
         barChart.legend.textColor = .black
+    }
+    
+    func retrieveResultFromCoreData() -> Favorite?
+    {
+        //remove from favourites
+        let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        let typePredicate = NSPredicate(format:"type = %@", key.type)
+        let datePredicate = NSPredicate(format:"date = %@", key.date)
+        let areaPredicate = NSPredicate(format:"area = %@", key.area)
+        
+        var subPredicates:[NSPredicate] = []
+        subPredicates.append(typePredicate)
+        subPredicates.append(datePredicate)
+        subPredicates.append(areaPredicate)
+        
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: subPredicates)
+        fetchRequest.sortDescriptors = []
+        
+        do
+        {
+            let result = try DataController.shared.viewContext.fetch(fetchRequest)
+            
+            if result.count > 0
+            {
+                return result[0]
+            }
+            else
+            {
+                return nil
+            }
+        }
+        catch
+        {
+            print("Error in DetailVC retrieveResultFromCoreData")
+            return nil
+        }
     }
 }

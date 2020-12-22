@@ -73,13 +73,7 @@ extension ChartCollectionVC : UICollectionViewDelegate, UICollectionViewDataSour
 {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chartCell", for: indexPath) as! ChartCell
-        
-        //SETUP TITLE ON CELL
-        cell.titleLabel?.text = uniqueAttributes[indexPath.row]
-        cell.titleLabel?.textColor = UIColor.AppTheme.paleYellow
-        
-        return cell
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

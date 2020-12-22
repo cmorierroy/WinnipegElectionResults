@@ -48,7 +48,6 @@ class DataController
             {
                 fatalError(error!.localizedDescription)
             }
-//            self.autoSaveViewContext()
             self.configureContexts()
             completion?()
         }
@@ -60,24 +59,5 @@ class DataController
     }
     
     static let shared = DataController(modelName: "WinnipegElectionResults")
-}
-
-extension DataController
-{
-    func autoSaveViewContext(interval: TimeInterval = 30)
-    {
-        guard interval > 0 else
-        {
-            print("cannot set negative autosave interval!")
-            return
-        }
-        if viewContext.hasChanges
-        {
-            try? viewContext.save()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
-            self.autoSaveViewContext(interval: interval)
-        }
-    }
 }
 

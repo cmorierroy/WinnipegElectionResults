@@ -23,8 +23,10 @@
 		8291C492258154070036AD1E /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C491258154060036AD1E /* PreferencesVC.swift */; };
 		8291C497258264E20036AD1E /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C496258264E20036AD1E /* CollectionVC.swift */; };
 		8291C49C2586C7100036AD1E /* TableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C49B2586C70F0036AD1E /* TableExtension.swift */; };
+		829FCCC625915739006AF540 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829FCCC525915739006AF540 /* ChartCell.swift */; };
+		829FCCC9259157C5006AF540 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829FCCC8259157C5006AF540 /* FavoriteCell.swift */; };
 		82B44675258965720000C54F /* ChartCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B44674258965720000C54F /* ChartCollectionVC.swift */; };
-		82B4467A258965E90000C54F /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B44679258965E90000C54F /* ChartCell.swift */; };
+		82B4467A258965E90000C54F /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B44679258965E90000C54F /* FilterCell.swift */; };
 		82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */; };
 		82B6E31F25757ABE00A8C9BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */; };
 		82B6E32125757ABE00A8C9BF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E32025757ABE00A8C9BF /* HomeVC.swift */; };
@@ -51,8 +53,10 @@
 		8291C491258154060036AD1E /* PreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesVC.swift; path = PreferencesVC/PreferencesVC.swift; sourceTree = "<group>"; };
 		8291C496258264E20036AD1E /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		8291C49B2586C70F0036AD1E /* TableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableExtension.swift; sourceTree = "<group>"; };
+		829FCCC525915739006AF540 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
+		829FCCC8259157C5006AF540 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		82B44674258965720000C54F /* ChartCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCollectionVC.swift; sourceTree = "<group>"; };
-		82B44679258965E90000C54F /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
+		82B44679258965E90000C54F /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		82B6E31925757ABE00A8C9BF /* WinnipegElectionResults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WinnipegElectionResults.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82B6E31E25757ABE00A8C9BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,7 +193,9 @@
 				8291C496258264E20036AD1E /* CollectionVC.swift */,
 				823FAD2325871EE700127333 /* FavoritesVC.swift */,
 				82B44674258965720000C54F /* ChartCollectionVC.swift */,
-				82B44679258965E90000C54F /* ChartCell.swift */,
+				829FCCC525915739006AF540 /* ChartCell.swift */,
+				82B44679258965E90000C54F /* FilterCell.swift */,
+				829FCCC8259157C5006AF540 /* FavoriteCell.swift */,
 			);
 			path = ChartCollectionVC;
 			sourceTree = "<group>";
@@ -347,12 +353,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				829FCCC625915739006AF540 /* ChartCell.swift in Sources */,
 				8291C492258154070036AD1E /* PreferencesVC.swift in Sources */,
 				82B44675258965720000C54F /* ChartCollectionVC.swift in Sources */,
 				82B6E32125757ABE00A8C9BF /* HomeVC.swift in Sources */,
 				8291C497258264E20036AD1E /* CollectionVC.swift in Sources */,
 				8200858325797CCA005D9814 /* DetailVC.swift in Sources */,
-				82B4467A258965E90000C54F /* ChartCell.swift in Sources */,
+				82B4467A258965E90000C54F /* FilterCell.swift in Sources */,
 				8291C49C2586C7100036AD1E /* TableExtension.swift in Sources */,
 				8200858A25798AD8005D9814 /* Colors.swift in Sources */,
 				82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */,
@@ -367,6 +374,7 @@
 				827C14FF259138F6007C43A2 /* ResultKey.swift in Sources */,
 				8215CCC62575A11000B76DFC /* WODClient.swift in Sources */,
 				82B6E31F25757ABE00A8C9BF /* SceneDelegate.swift in Sources */,
+				829FCCC9259157C5006AF540 /* FavoriteCell.swift in Sources */,
 				8215CCCA2575A16A00B76DFC /* ElectionResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

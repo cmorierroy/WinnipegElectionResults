@@ -92,6 +92,11 @@ class HomeVC: UIViewController
         
         let lastUpdate:LastUpdate? = getLastUpdate()
         
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ElectionResult.fetchRequest()
+        let sortByDate = NSSortDescriptor(key: "fullDate", ascending: false)
+        let sortByArea = NSSortDescriptor(key:"area", ascending: true)
+        fetchRequest.sortDescriptors = [sortByDate,sortByArea]
+        
         if let error = error
         {
             displayAlert(title: "Error", message: error.localizedDescription)
@@ -105,16 +110,72 @@ class HomeVC: UIViewController
                 currentFormattedDate = "N/A"
             }
             
+            //create array from coredata entries if they exist
+            var items:[ElectionResponse] = []
+            
+            do
+            {
+                let fetchedEntries = try DataController.shared.viewContext.fetch(fetchRequest) as! [ElectionResult]
+                
+                var item:ElectionResponse
+                for entry in fetchedEntries
+                {
+                    let fullDate = entry.fullDate ?? ""
+                    let type = entry.type ?? ""
+                    let area = entry.area ?? ""
+                    let candidate = entry.candidate ?? ""
+                    let position = entry.position ?? ""
+                    let votes = entry.votes ?? ""
+                    let won = entry.won ?? ""
+                    
+                    item = ElectionResponse(fullDate: fullDate, type: type, area: area, candidate: candidate, position: position, votes: votes, won: won)
+                    items.append(item)
+                }
+                
+                ElectionData.all = items
+            }
+            catch let error as NSError
+            {
+                print(error.localizedDescription)
+            }
+            
         }
         else
         {
             //save all the results
-            ElectionData.all = result
-            ElectionData.filterBallotQuestions() //create a separate JSON objects for any ballot questions
-            //TODO: probably best to divide wards from school divisions from ballot questions
+            //wipe all previous coredata electionResults
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+            // perform the delete
+            do
+            {
+                try DataController.shared.viewContext.execute(deleteRequest)
+            }
+            catch let error as NSError
+            {
+                print(error)
+            }
             
-            tableEntries = ElectionData.filterUniqueAttributes(attribute: .type, data: ElectionData.all)
-            tableView.reloadData()
+            //place all new entries from result in coredata, in case internet unavailable
+            for item in result
+            {
+                let entry = ElectionResult(context:DataController.shared.viewContext)
+                entry.won = item.won
+                entry.candidate = item.candidate
+                entry.area = item.area
+                entry.type = item.type
+                entry.fullDate = item.fullDate
+                entry.position = item.position
+                entry.votes = item.votes
+            }
+            
+            //save all requested data to be used as current data
+            ElectionData.all = result
+            
+            //MARK: future improvement
+            //ElectionData.filterBallotQuestions() //create a separate JSON object for any ballot questions
+            //TODO: probably best to divide wards/school divisions/ballot questions
+            
             
             let currentDate = Date()
             currentFormattedDate = formatter.string(from: currentDate)
@@ -135,6 +196,9 @@ class HomeVC: UIViewController
             //save context
             DataController.shared.saveContext()
         }
+        
+        tableEntries = ElectionData.filterUniqueAttributes(attribute: .type, data: ElectionData.all)
+        tableView.reloadData()
         
         //set text
         updateDateLabel.text = updateDateLabel.text! + currentFormattedDate

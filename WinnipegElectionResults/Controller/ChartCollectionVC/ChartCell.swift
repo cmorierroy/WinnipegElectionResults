@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  ChartCell.swift
 //  WinnipegElectionResults
 //
-//  Created by Cédric Morier-Roy on 2020-12-15.
+//  Created by Cédric Morier-Roy on 2020-12-21.
 //
 
 import Foundation
@@ -11,7 +11,6 @@ import Charts
 
 class ChartCell : UICollectionViewCell
 {
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var barChart: BarChartView!
     
@@ -53,7 +52,7 @@ class ChartCell : UICollectionViewCell
         
         //CUSTOMIZATION OF PIE CHART
         pieChart.entryLabelColor = .black
-        pieChart.centerText = "Democratic score:..."
+        //pieChart.centerText = "Democratic score:..."
         pieChart.holeColor = UIColor.AppTheme.paleYellow
         pieChart.data = pieChartData
         pieChart.backgroundColor = UIColor.AppTheme.paleYellow
@@ -64,7 +63,6 @@ class ChartCell : UICollectionViewCell
         pieChart.drawEntryLabelsEnabled = false
         
         //customize center text/labels
-        
         
         pieChart.animate(xAxisDuration: 1, yAxisDuration: 1)
     }

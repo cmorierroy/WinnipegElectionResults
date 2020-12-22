@@ -10,9 +10,13 @@ import CoreData
 
 class FavoritesVC: ChartCollectionVC
 {
+    
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     var fetchedResultsController:NSFetchedResultsController<Favorite>!
     var favorites:[Favorite]? = nil
     var dataMatches:[[ElectionResponse]] = []
+    var uniqueKeys:[ResultKey] = []
     
     override func viewDidLoad()
     {
@@ -26,16 +30,44 @@ class FavoritesVC: ChartCollectionVC
     override func viewWillAppear(_ animated:Bool)
     {
         super.viewWillAppear(animated)
+        
         updateFavorites()
         collectionView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if(segue.identifier == "toDetailVC")
+        {
+            if let vc = segue.destination as? DetailVC
+            {
+                //MARK: give key along with matching data
+                let key = sender as! ResultKey
+                
+                vc.key = key
+                vc.results = ElectionData.resultsMatching(type: key.type, date: key.date, area: key.area)
+            }
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return uniqueKeys.count
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! ChartCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as! FavoriteCell
+            
+        //SETUP TITLES ON CELL
+        cell.titleLabel?.text = uniqueKeys[indexPath.row].area
+        cell.titleLabel?.textColor = UIColor.AppTheme.paleYellow
+        cell.dateLabel?.text = uniqueKeys[indexPath.row].date
+        cell.dateLabel?.textColor = UIColor.AppTheme.paleYellow
+        cell.typeLabel?.text = uniqueKeys[indexPath.row].type
+        cell.typeLabel?.textColor = UIColor.AppTheme.paleYellow
         
         //SETUP CHART ON CELL
-        //MARK: GET DATA FROM COREDATA?
         cell.results = dataMatches[indexPath.row]
         
         //setup pie or bar chart
@@ -66,34 +98,31 @@ class FavoritesVC: ChartCollectionVC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        //MARK: needs adjustment
-        var key:String
+        //MARK: ADJUST CELL TO HAVE SEPARATE KEY VALUES
+        var key:ResultKey
         
-        key = uniqueAttributes[indexPath.row]
+        key = uniqueKeys[indexPath.row]
         
         performSegue(withIdentifier: "toDetailVC", sender: key)
-        //reload to show highlight
-        //collectionView.reloadItems(at: [indexPath])
     }
     
-    func getFavoriteTitles(favorites:[Favorite]?) -> [String]
+    func getFavoriteKeys(favorites:[Favorite]?) -> [ResultKey]
     {
-        var titles:[String] = []
+        var keys:[ResultKey] = []
         
         if let favorites = favorites
         {
-            
             for item in favorites
             {
                 let type = item.type ?? ""
                 let date = item.date ?? ""
                 let area = item.area ?? ""
-                titles.append(type + " | " + date + " | " + area)
+                let key = ResultKey(type: type, date: date, area: area)
+                keys.append(key)
             }
-            
         }
         
-        return titles
+        return keys
     }
     
     func updateFavorites()
@@ -102,7 +131,7 @@ class FavoritesVC: ChartCollectionVC
 
         if let favorites = getFavorites()
         {
-            uniqueAttributes = getFavoriteTitles(favorites:favorites)
+            uniqueKeys = getFavoriteKeys(favorites:favorites)
             
             //retrieve all results that match given favourites
             for item in favorites

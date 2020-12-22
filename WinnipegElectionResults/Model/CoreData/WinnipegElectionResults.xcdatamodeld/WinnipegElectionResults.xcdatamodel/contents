@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ElectionResult" representedClassName="ElectionResult" syncable="YES" codeGenerationType="class">
+        <attribute name="area" optional="YES" attributeType="String"/>
+        <attribute name="candidate" optional="YES" attributeType="String"/>
+        <attribute name="fullDate" optional="YES" attributeType="String"/>
+        <attribute name="position" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="votes" optional="YES" attributeType="String"/>
+        <attribute name="won" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Favorite" representedClassName="Favorite" syncable="YES" codeGenerationType="class">
         <attribute name="area" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
@@ -9,7 +18,8 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="LastUpdate" positionX="-108.828125" positionY="-19.703125" width="128" height="58"/>
         <element name="Favorite" positionX="70.21484375" positionY="-11.84375" width="128" height="88"/>
+        <element name="LastUpdate" positionX="-108.828125" positionY="-19.703125" width="128" height="58"/>
+        <element name="ElectionResult" positionX="-18" positionY="9" width="128" height="148"/>
     </elements>
 </model>
