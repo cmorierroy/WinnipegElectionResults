@@ -100,7 +100,7 @@ class CollectionVC: ChartCollectionVC
         
         //SETUP CELL FORMAT
         cell.backgroundColor = .black
-        cell.layer.cornerRadius = collectionView.layoutAttributesForItem(at: indexPath)!.size.height/3
+        cell.layer.cornerRadius = collectionView.layoutAttributesForItem(at: indexPath)!.size.height/5
         cell.layer.borderWidth = 3
         cell.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
         

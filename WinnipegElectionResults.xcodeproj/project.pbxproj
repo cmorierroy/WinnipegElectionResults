@@ -25,6 +25,7 @@
 		8291C49C2586C7100036AD1E /* TableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8291C49B2586C70F0036AD1E /* TableExtension.swift */; };
 		829FCCC625915739006AF540 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829FCCC525915739006AF540 /* ChartCell.swift */; };
 		829FCCC9259157C5006AF540 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829FCCC8259157C5006AF540 /* FavoriteCell.swift */; };
+		829FCCCE2592E431006AF540 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829FCCCD2592E431006AF540 /* ViewControllerExtension.swift */; };
 		82B44675258965720000C54F /* ChartCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B44674258965720000C54F /* ChartCollectionVC.swift */; };
 		82B4467A258965E90000C54F /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B44679258965E90000C54F /* FilterCell.swift */; };
 		82B6E31D25757ABE00A8C9BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6E31C25757ABE00A8C9BF /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 		8291C49B2586C70F0036AD1E /* TableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableExtension.swift; sourceTree = "<group>"; };
 		829FCCC525915739006AF540 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		829FCCC8259157C5006AF540 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		829FCCCD2592E431006AF540 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		82B44674258965720000C54F /* ChartCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCollectionVC.swift; sourceTree = "<group>"; };
 		82B44679258965E90000C54F /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		82B6E31925757ABE00A8C9BF /* WinnipegElectionResults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WinnipegElectionResults.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,12 +159,12 @@
 		828928062576D7AE0028F277 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				829FCCCC2592E38F006AF540 /* Extensions */,
 				824EF9742578176800F6D26D /* HomeVC */,
 				824EF975257817E900F6D26D /* ResultFilterVC */,
 				82B446732589650B0000C54F /* ChartCollectionVC */,
 				8200858125797CAF005D9814 /* DetailVC */,
 				8291C491258154060036AD1E /* PreferencesVC.swift */,
-				8291C49B2586C70F0036AD1E /* TableExtension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +187,15 @@
 				82B6E32A25757AC100A8C9BF /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		829FCCCC2592E38F006AF540 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8291C49B2586C70F0036AD1E /* TableExtension.swift */,
+				829FCCCD2592E431006AF540 /* ViewControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		82B446732589650B0000C54F /* ChartCollectionVC */ = {
@@ -373,6 +384,7 @@
 				8289280A2576D8640028F277 /* ElectionData.swift in Sources */,
 				827C14FF259138F6007C43A2 /* ResultKey.swift in Sources */,
 				8215CCC62575A11000B76DFC /* WODClient.swift in Sources */,
+				829FCCCE2592E431006AF540 /* ViewControllerExtension.swift in Sources */,
 				82B6E31F25757ABE00A8C9BF /* SceneDelegate.swift in Sources */,
 				829FCCC9259157C5006AF540 /* FavoriteCell.swift in Sources */,
 				8215CCCA2575A16A00B76DFC /* ElectionResponse.swift in Sources */,

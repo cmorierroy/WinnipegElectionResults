@@ -219,14 +219,4 @@ class HomeVC: UIViewController
             }
         }
     }
-    
-    func displayAlert(title: String, message: String)
-    {
-        DispatchQueue.main.async
-        {
-            let alertVC = UIAlertController(title:title,message: message,preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.showDetailViewController(alertVC, sender: nil)
-        }
-    }
 }
